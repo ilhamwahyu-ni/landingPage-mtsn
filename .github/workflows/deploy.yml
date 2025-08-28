@@ -1,30 +1,52 @@
-name: Deploy Static Site to aaPanel
+# Nama workflow yang akan tampil di tab "Actions" GitHub
+name: Deploy to Production Server
 
+# Menentukan kapan workflow ini akan berjalan
 on:
+  # Memicu workflow setiap kali ada 'push' ke branch 'main'
   push:
-    branches:
-      - main  # Sesuaikan dengan branch yang digunakan
+    branches: [ main ]
 
+# Kumpulan pekerjaan yang akan dijalankan
 jobs:
+  # Hanya ada satu pekerjaan (job) dalam workflow ini, bernama 'deploy'
   deploy:
+    # Menentukan jenis mesin virtual yang akan digunakan untuk menjalankan job
+    # 'ubuntu-latest' adalah pilihan yang umum dan direkomendasikan
     runs-on: ubuntu-latest
 
+    # Langkah-langkah (steps) yang akan dieksekusi secara berurutan
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      # Langkah 1: Checkout kode dari repositori
+      # Ini adalah langkah wajib agar workflow memiliki akses ke kode Anda
+      - name: Checkout repository code
+        uses: actions/checkout@v4
 
-      - name: Deploy to aaPanel via SSH
-        uses: appleboy/ssh-action@master
+      # Langkah 2: SSH ke server dan jalankan skrip deployment
+      # Menggunakan versi spesifik (v1.0.3) lebih aman daripada '@master'
+      - name: SSH and Run Deployment Script
+        uses: appleboy/ssh-action@v1.0.3
         with:
+          # Host atau alamat IP server Anda
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
+          # Username untuk login ke server
+          username: ${{ secrets.SSH_USERNAME }}
+          # Kunci SSH privat untuk otentikasi
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # Port SSH (biasanya 22)
+          port: 22
+          # Skrip yang akan dijalankan di server
           script: |
+            echo "🚚 Connecting to server and moving to directory..."
             cd /www/wwwroot/mtsnpadangpanjang.sch.id
+            
+            echo "🔍 Checking if directory is a git repository..."
             if [ -d .git ]; then
+              echo "✅ It is a git repository. Pulling latest changes from main branch..."
               sudo -u www git pull origin main
+              echo "🎉 Pull successful!"
             else
-              echo "Not a git repository. Skipping git pull."
-            fi 
-      
-         
+              echo "⚠️ Not a git repository. Skipping git pull."
+            fi
+            
+            echo "🚀 Deployment script finished."
