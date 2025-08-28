@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTsN Kota Padang Panjang | Madrasah Maju, Bermutu, Mendunia</title>
+
+    <!-- Google Fonts: Poppins, Lato, Great Vibes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;600;700;900&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- KODE CSS (GAYA TAMPILAN) DIMASUKKAN DI SINI -->
+    <style>
+        /* ==================== ROOT VARIABLES & GLOBAL STYLES ==================== */
+        :root {
+            --dark-green: #014225;
+            --light-green: #EAF3F0;
+            --gold: #D4AF37;
+            --gold-hover: #EACD69;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --cream: #FAF8F0;
+            --text-dark: #333333;
+            --text-light: #F1F1F1;
+
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            --font-script: 'Great Vibes', cursive;
+
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ==================== BUTTONS ==================== */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--gold), var(--gold-hover));
+            color: var(--dark-green);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-secondary {
+            color: var(--white);
+            background: transparent;
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--dark-green);
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        #hero {
+            height: 100vh;
+            width: 100%;
+            background: url('https://placehold.co/1920x1080/014225/ffffff?text=Foto+Marching+Band+MTsN') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(1, 66, 37, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-family: var(--font-primary);
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            font-weight: 400;
+        }
+
+        /* ==================== TIGA PILAR SECTION ==================== */
+        #unggulan {
+            background-color: var(--off-white);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .pillar-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .fa-trophy {
+            color: var(--gold);
+        }
+
+        .fa-book-quran,
+        .fa-palette {
+            color: var(--dark-green);
+        }
+
+        .pillar-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==================== PRESTASI SECTION ==================== */
+        .prestasi-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-primary);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .prestasi-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .prestasi-item {
+            background: var(--white);
+            border-left: 5px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .prestasi-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .prestasi-item h4 {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--dark-green);
+        }
+
+        .prestasi-item p {
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        /* ==================== SAMBUTAN SECTION ==================== */
+        #sambutan {
+            background-color: var(--off-white);
+        }
+
+        .sambutan-container {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .sambutan-foto img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .sambutan-teks {
+            position: relative;
+        }
+
+        .quote-mark {
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            font-size: 10rem;
+            font-family: serif;
+            color: var(--light-green);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .sambutan-teks h2 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .script-font {
+            font-family: var(--font-script);
+            font-size: 2.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+        }
+
+        .quote-content {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .sambutan-teks h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--dark-green);
+            margin-top: 2rem;
+        }
+
+        /* ==================== FASILITAS SECTION ==================== */
+        #fasilitas {
+            background-color: var(--white);
+        }
+
+        .fasilitas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .fasilitas-card {
+            background: var(--off-white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            border-top: 5px solid var(--dark-green);
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fasilitas-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .fasilitas-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+        }
+
+        .fasilitas-card h3 {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+
+        /* ==================== KEHIDUPAN KAMPUS SECTION ==================== */
+        .photo-collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .collage-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .collage-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        .item-1 {
+            grid-column: 1 / 3;
+        }
+
+        .item-2 {
+            grid-column: 3 / 4;
+            grid-row: 1 / 3;
+        }
+
+        .item-3 {
+            grid-column: 4 / 5;
+        }
+
+        .item-4 {
+            grid-column: 1 / 2;
+        }
+
+        .item-5 {
+            grid-column: 2 / 3;
+        }
+
+        /* ==================== SEJARAH SECTION (UPDATED FOR PRECISION) ==================== */
+        #sejarah {
+            background-color: var(--cream);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--dark-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--white);
+            border: 5px solid var(--gold);
+            top: 22px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: 0;
+            transform: translateX(50%);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: 0;
+            transform: translateX(-50%);
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        #cta {
+            background-color: var(--light-green);
+        }
+
+        .cta-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .cta-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            border-top: 5px solid var(--gold);
+        }
+
+        .cta-icon {
+            font-size: 3rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        .cta-card h4 {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-cta {
+            padding: 1.2rem 4rem;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding-top: 4rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            max-width: 180px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--gold);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ==================== ANIMATIONS ON SCROLL ==================== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay untuk animasi bertingkat */
+        .hero-content h1 {
+            transition-delay: 0.2s;
+        }
+
+        .hero-content p {
+            transition-delay: 0.4s;
+        }
+
+        .hero-content .hero-buttons {
+            transition-delay: 0.6s;
+        }
+
+        .pillar-card:nth-child(2),
+        .fasilitas-card:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .pillar-card:nth-child(3),
+        .fasilitas-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        .fasilitas-card:nth-child(4) {
+            transition-delay: 0.6s;
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 1200px) {
+            .fasilitas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .pillars-grid,
+            .cta-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .prestasi-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .prestasi-stats {
+                margin-bottom: 3rem;
+            }
+
+            .sambutan-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sambutan-foto {
+                max-width: 350px;
+                margin: 0 auto 2rem auto;
+            }
+
+            .photo-collage {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(auto, 200px);
+            }
+
+            .item-1 {
+                grid-column: 1 / 3;
+            }
+
+            .item-2 {
+                grid-column: 1 / 2;
+                grid-row: 2 / 4;
+            }
+
+            .item-3 {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+            }
+
+            .item-4 {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+            }
+
+            .item-5 {
+                grid-column: 1 / 3;
+                grid-row: 4 / 5;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 3rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+            }
+
+            .timeline::after {
+                left: 31px;
+                transform: translateX(0);
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 31px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 31px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item:nth-child(odd)::after {
+                left: 31px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content {
+                text-align: center;
+            }
+
+            .fasilitas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="animate-on-scroll">Madrasah Maju, Bermutu, Mendunia</h1>
+            <p class="animate-on-scroll">Selamat Datang di MTsN Kota Padang Panjang. Tempat Lahirnya Generasi Bertaqwa,
+                Kompetitif, dan Inovatif.</p>
+            <div class="hero-buttons animate-on-scroll">
+                <a href="#cta" class="btn btn-primary">DAFTAR PPDB 2025/2026</a>
+                <a href="#unggulan" class="btn btn-secondary">Jelajahi Program Kami ></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TIGA PILAR KEUNGGULAN ==================== -->
+    <section id="unggulan" class="section">
+        <div class="container">
+            <div class="pillars-grid">
+                <div class="pillar-card animate-on-scroll">
+                    <i class="fas fa-trophy pillar-icon"></i>
+                    <h3>Akademik Juara</h3>
+                    <p>Meraih prestasi gemilang di kancah sains dan matematika, membuktikan kualitas pendidikan
+                        terdepan.</p>
+                </div>
+                <div class="pillar-card animate-on-scroll">
+                    <i class="fas fa-book-quran pillar-icon"></i>
+                    <h3>Karakter Qur'ani</h3>
+                    <p>Membentuk pribadi beradab mulia melalui program Tahfizh dan pembinaan keislaman yang intensif.
+                    </p>
+                </div>
+                <div class="pillar-card animate-on-scroll">
+                    <i class="fas fa-palette pillar-icon"></i>
+                    <h3>Bakat Mendunia</h3>
+                    <p>Mengasah talenta siswa di bidang seni, olahraga, dan ekstrakurikuler hingga level nasional dan
+                        internasional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PANGGUNG PRESTASI ==================== -->
+    <section id="prestasi" class="section">
+        <div class="container prestasi-container">
+            <div class="prestasi-stats animate-on-scroll">
+                <h2 class="section-title">Panggung Prestasi Nasional</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="8">0</span>+
+                        <p>Medali Emas PAI</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1">0</span>
+                        <p>Juara Lomba Lukis Nasional</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="30">0</span>+
+                        <p>Prestasi Tingkat Provinsi</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span>%
+                        <p>Lulusan Berkualitas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="prestasi-list animate-on-scroll">
+                <div class="prestasi-item">
+                    <h4>Kasyifatul Ulya</h4>
+                    <p>Juara 1 Lomba Lukis Tingkat Nasional</p>
+                </div>
+                <div class="prestasi-item">
+                    <h4>Habib Adzanul Haqqi</h4>
+                    <p>Medali Emas Kompetisi Sains Madrasah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SAMBUTAN KEPALA MADRASAH ==================== -->
+    <section id="sambutan" class="section">
+        <div class="container sambutan-container">
+            <div class="sambutan-foto animate-on-scroll">
+                <img src="https://placehold.co/450x550/8e44ad/ffffff?text=Firmawati+Anwar,+S.Ag"
+                    alt="Foto Kepala Madrasah Firmawati Anwar">
+            </div>
+            <div class="sambutan-teks animate-on-scroll">
+                <span class="quote-mark">“</span>
+                <h2>Sambutan Hangat dari Pemimpin</h2>
+                <p class="quote-content">
+                    <span class="script-font">Assalamu'alaikum Warahmatullahi Wabarakatuh...</span><br>
+                    Di MTsN Kota Padang Panjang, kami tidak hanya mencetak siswa yang cerdas secara akademis, tetapi
+                    juga pribadi yang berakhlak mulia dan siap menghadapi tantangan global. Mari bersama kami wujudkan
+                    generasi masa depan yang membanggakan.
+                </p>
+                <h4>Firmawati Anwar, S.Ag, M.Pd</h4>
+                <p>Kepala MTsN Kota Padang Panjang</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FASILITAS UNGGULAN (DIPERBARUI) ==================== -->
+    <section id="fasilitas" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Fasilitas Unggulan</h2>
+            <div class="fasilitas-grid">
+                <div class="fasilitas-card animate-on-scroll">
+                    <i class="fas fa-school fasilitas-icon"></i>
+                    <h3>Kampus 1</h3>
+                    <p>Pusat KBM utama dengan ruang kelas modern, aula serbaguna, dan lingkungan yang asri.</p>
+                </div>
+                <div class="fasilitas-card animate-on-scroll">
+                    <i class="fas fa-building fasilitas-icon"></i>
+                    <h3>Kampus 2</h3>
+                    <p>Pusat Proses Belajar Mengajar (PBM) tambahan untuk menunjang kegiatan akademik siswa.</p>
+                </div>
+                <div class="fasilitas-card animate-on-scroll">
+                    <i class="fas fa-computer fasilitas-icon"></i>
+                    <h3>Labor Komputer</h3>
+                    <p>Dilengkapi perangkat terkini untuk mendukung pembelajaran digital dan teknologi informasi.</p>
+                </div>
+                <div class="fasilitas-card animate-on-scroll">
+                    <i class="fas fa-podcast fasilitas-icon"></i>
+                    <h3>Podcast Studio</h3>
+                    <p>Studio modern untuk mengembangkan kreativitas siswa di bidang penyiaran dan konten digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== KEHIDUPAN KAMPUS ==================== -->
+    <section id="kehidupan-kampus" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Lebih dari Sekadar Sekolah</h2>
+            <div class="photo-collage">
+                <div class="collage-item item-1 animate-on-scroll"><img
+                        src="https://placehold.co/600x400/e74c3c/ffffff?text=Senam+Pagi" alt="Senam Pagi"></div>
+                <div class="collage-item item-2 animate-on-scroll"><img
+                        src="https://placehold.co/400x500/f1c40f/ffffff?text=Sholat+Dhuha" alt="Sholat Dhuha"></div>
+                <div class="collage-item item-3 animate-on-scroll"><img
+                        src="https://placehold.co/400x300/3498db/ffffff?text=Lab+IPA" alt="Lab IPA"></div>
+                <div class="collage-item item-4 animate-on-scroll"><img
+                        src="https://placehold.co/500x350/2ecc71/ffffff?text=Asrama+Siswa" alt="Asrama Siswa"></div>
+                <div class="collage-item item-5 animate-on-scroll"><img
+                        src="https://placehold.co/600x450/9b59b6/ffffff?text=Marching+Band" alt="Marching Band"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== JEJAK SEJARAH ==================== -->
+    <section id="sejarah" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Jejak Sejarah yang Mengakar Kuat</h2>
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>1978</h3>
+                        <p>Madrasah didirikan sebagai cikal bakal pendidikan Islam modern di Padang Panjang.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>1998</h3>
+                        <p>Status dinegerikan, menjadi MTsN Padang Panjang dan memulai era baru pengembangan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>2000</h3>
+                        <p>Meraih akreditasi 'A' untuk pertama kalinya, sebuah penegasan atas kualitas pendidikan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-content">
+                        <h3>2019</h3>
+                        <p>Menjadi Madrasah Unggulan dan Rujukan Nasional, mencetak prestasi hingga tingkat
+                            internasional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION (CTA) ==================== -->
+    <section id="cta" class="section">
+        <div class="container text-center">
+            <h2 class="section-title animate-on-scroll">Bergabunglah dengan Keluarga Juara MTsN Kota Padang Panjang!
+            </h2>
+            <div class="cta-cards">
+                <div class="cta-card animate-on-scroll">
+                    <i class="fas fa-medal cta-icon"></i>
+                    <h4>Jalur Prestasi</h4>
+                    <p>Bagi calon siswa dengan rekam jejak akademis dan non-akademis yang cemerlang.</p>
+                </div>
+                <div class="cta-card animate-on-scroll">
+                    <i class="fas fa-building-columns cta-icon"></i>
+                    <h4>Jalur Asrama</h4>
+                    <p>Program khusus dengan pembinaan intensif 24 jam untuk karakter dan kemandirian.</p>
+                </div>
+                <div class="cta-card animate-on-scroll">
+                    <i class="fas fa-book-open cta-icon"></i>
+                    <h4>Jalur Reguler</h4>
+                    <p>Penerimaan umum melalui seleksi standar untuk menjaring siswa-siswi potensial.</p>
+                </div>
+            </div>
+            <a href="#" class="btn btn-primary btn-cta animate-on-scroll">LIHAT ALUR PENDAFTARAN SEKARANG</a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <img src="https://placehold.co/150x50/ffffff/014225?text=Logo+MTsN" alt="Logo MTsN Kota Padang Panjang"
+                    class="footer-logo">
+                <p>Jl. H. Agus Salim No.13, Guguk Malintang, Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat
+                    27128</p>
+                <p><strong>Telepon:</strong> (0752) 123-456<br><strong>Email:</strong> info@mtsnpadangpanjang.sch.id</p>
+            </div>
+            <div class="footer-col">
+                <h4>Media Sosial</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tautan Cepat</h4>
+                <ul>
+                    <li><a href="#">Profil Madrasah</a></li>
+                    <li><a href="#prestasi">Prestasi</a></li>
+                    <li><a href="#cta">PPDB 2025</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MTsN Kota Padang Panjang. All Rights Reserved. <br> Developed by <a href="https://ilwa.my.id"
+                    target="_blank" rel="noopener noreferrer" class="footer-link">ilwa.my.id</a></p>
+        </div>
+    </footer>
+
+
+    <!-- KODE JAVASCRIPT (INTERAKTIVITAS) DIMASUKKAN DI SINI -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => observer.observe(el));
+
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            if (counter.classList.contains('animated')) return;
+                            counter.classList.add('animated');
+
+                            const target = +counter.getAttribute('data-target');
+                            counter.innerText = '0';
+
+                            const updateCounter = () => {
+                                const current = +counter.innerText;
+                                const increment = target / 200;
+
+                                if (current < target) {
+                                    counter.innerText = `${Math.ceil(current + increment)}`;
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+
+                            requestAnimationFrame(updateCounter);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            const statsSection = document.querySelector('#prestasi');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+
+        });
+    </script>
+</body>
+
+</html>
