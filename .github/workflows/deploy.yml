@@ -25,6 +25,6 @@ jobs:
               git pull origin main
             else
               echo "Not a git repository. Skipping git pull."
-            fi
+            fi 
       
          
