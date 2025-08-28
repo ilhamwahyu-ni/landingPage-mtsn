@@ -21,6 +21,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /www/wwwroot/mtsnpadangpanjang.sch.id
-            sudo -u www git pull origin main
+            sudo -u www git pull origin main 
       
          
