@@ -22,7 +22,7 @@ jobs:
           script: |
             cd /www/wwwroot/mtsnpadangpanjang.sch.id
             if [ -d .git ]; then
-              git pull origin main
+              sudo -u www git pull origin main
             else
               echo "Not a git repository. Skipping git pull."
             fi 
