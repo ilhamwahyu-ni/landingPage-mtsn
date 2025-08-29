@@ -140,6 +140,58 @@
             color: var(--gold);
         }
 
+        .nav__item-dropdown {
+            position: relative;
+        }
+
+        .nav__link-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown__menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            list-style: none;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-medium);
+            min-width: 220px;
+            z-index: 10;
+        }
+
+        .nav__item-dropdown:hover .dropdown__menu {
+            display: block;
+        }
+
+        .nav__item-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .dropdown__link {
+            color: var(--dark-green);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown__link:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+
         .nav__btn {
             padding: 0.7rem 1.8rem;
             /* Smaller button in nav */
@@ -175,7 +227,8 @@
 
             .nav__list {
                 flex-direction: column;
-                gap: 3rem;
+                gap: 1.5rem;
+                /* Adjusted gap for dropdown */
                 text-align: center;
             }
 
@@ -193,6 +246,56 @@
             .header-scrolled .nav__link {
                 color: var(--white);
             }
+
+            /* Mobile Dropdown Styles */
+            .nav__item-dropdown:hover .dropdown__menu {
+                display: none;
+                /* Disable hover effect on mobile */
+            }
+
+            .nav__item-dropdown:hover .dropdown-icon {
+                transform: rotate(0deg);
+            }
+
+            .dropdown__menu {
+                position: static;
+                display: block;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+                min-width: auto;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+            }
+
+            .dropdown__item {
+                padding-left: 2rem;
+                /* Indent submenu items */
+            }
+
+            .dropdown__link {
+                color: var(--white);
+                padding: 1rem;
+            }
+
+            .dropdown__link:hover {
+                background-color: transparent;
+                color: var(--gold);
+            }
+
+            /* Active state for mobile dropdown */
+            .nav__item-dropdown.submenu-active .dropdown__menu {
+                max-height: 500px;
+                /* A large enough value to show items */
+                margin-top: 1rem;
+            }
+
+            .nav__item-dropdown.submenu-active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+
 
             .nav__close {
                 display: block;
@@ -919,6 +1022,19 @@
                     <li class="nav__item">
                         <a href="#prestasi" class="nav__link">Prestasi</a>
                     </li>
+                    <li class="nav__item nav__item-dropdown">
+                        <a href="#" class="nav__link nav__link-dropdown">
+                            Akademik <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li class="dropdown__item">
+                                <a href="jadwal-pelajaran.html" class="dropdown__link">Jadwal Pelajaran</a>
+                            </li>
+                            <li class="dropdown__item">
+                                <a href="#" class="dropdown__link">Kalender Akademik</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav__item">
                         <a href="#fasilitas" class="nav__link">Fasilitas</a>
                     </li>
@@ -949,7 +1065,7 @@
             <p class="animate-on-scroll">Selamat Datang di MTsN Kota Padang Panjang. Tempat Lahirnya Generasi Bertaqwa,
                 Kompetitif, dan Inovatif.</p>
             <div class="hero-buttons animate-on-scroll">
-                <a href="#cta" class="btn btn-primary">DAFTAR PPDB 2026/2027</a>
+                <a href="#cta" class="btn btn-primary">DAFTAR PPDB 2026/2026</a>
                 <a href="#unggulan" class="btn btn-secondary">Jelajahi Program Kami ></a>
             </div>
         </div>
@@ -1151,8 +1267,7 @@
     <footer>
         <div class="container footer-container">
             <div class="footer-col">
-                <img src="src/img/logo-mtsn.png" alt="Logo MTsN Kota Padang Panjang"
-                    class="footer-logo">
+                <img src="src/img/logo-mtsn.png" alt="Logo MTsN Kota Padang Panjang" class="footer-logo">
                 <p>Jl. H. Agus Salim No.13, Guguk Malintang, Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat
                     27128</p>
                 <p><strong>Telepon:</strong> (0752) 123-456<br><strong>Email:</strong> info@mtsnpadangpanjang.sch.id</p>
@@ -1171,7 +1286,7 @@
                 <ul>
                     <li><a href="#">Profil Madrasah</a></li>
                     <li><a href="#prestasi">Prestasi</a></li>
-                    <li><a href="#cta">PPDB 2025</a></li>
+                    <li><a href="#cta">PPDB 2026</a></li>
                     <li><a href="#">Kontak Kami</a></li>
                 </ul>
             </div>
@@ -1206,11 +1321,26 @@
                 });
             }
 
-            // Hide menu when a link is clicked
-            const navLinks = document.querySelectorAll('.nav__link');
+            // Hide menu when a non-dropdown link is clicked
+            const navLinks = document.querySelectorAll('.nav__link:not(.nav__link-dropdown)');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('show-menu');
+                });
+            });
+
+
+            /*==================== DROPDOWN MENU (FOR MOBILE) ====================*/
+            const dropdownLinks = document.querySelectorAll('.nav__link-dropdown');
+
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Check if in mobile view by checking the navToggle's display style
+                    if (window.getComputedStyle(navToggle).display !== 'none') {
+                        e.preventDefault(); // Prevent link from navigating
+                        const dropdownItem = link.parentElement;
+                        dropdownItem.classList.toggle('submenu-active');
+                    }
                 });
             });
 
