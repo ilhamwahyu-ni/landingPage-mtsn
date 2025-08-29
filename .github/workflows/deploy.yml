@@ -7,15 +7,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deployment
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            
-           
             cd /www/wwwroot/mtsnpadangpanjang.sch.id/landingPage-mtsn
-            sudo -u www GIT_SSH_COMMAND="ssh -i /root/.ssh/landingpage_mtsn -o IdentitiesOnly=yes" git pull origin main
-
+            sudo -u www git pull origin main
