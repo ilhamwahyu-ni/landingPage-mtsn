@@ -11,8 +11,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
           username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Masuk ke direktori proyek
             cd /www/wwwroot/mtsnpadangpanjang.sch.id
+            sudo -u www git pull origin main
