@@ -1000,6 +1000,60 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Mobile Dropdown Styles */
+        @media screen and (max-width: 992px) {
+            .nav__item-dropdown:hover .dropdown__menu {
+                display: none;
+                /* Menonaktifkan hover di mobile */
+            }
+
+            .nav__item-dropdown:hover .dropdown-icon {
+                transform: rotate(0deg);
+            }
+
+            .dropdown__menu {
+                position: static;
+                display: block;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0;
+                border-radius: 0;
+                min-width: auto;
+                max-height: 0;
+                /* Sembunyikan submenu */
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+            }
+
+            .dropdown__item {
+                padding-left: 0;
+            }
+
+            .dropdown__link {
+                color: var(--white);
+                padding: 0.75rem 1rem;
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                margin-bottom: 0.5rem;
+            }
+
+            .dropdown__link:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--gold);
+            }
+
+            /* Kelas aktif untuk menampilkan submenu di mobile */
+            .nav__item-dropdown.submenu-active .dropdown__menu {
+                max-height: 500px;
+                /* Nilai yang cukup besar untuk menampilkan semua item */
+                margin-top: 1rem;
+            }
+
+            .nav__item-dropdown.submenu-active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+        }
     </style>
 </head>
 
@@ -1023,7 +1077,7 @@
                         <a href="#prestasi" class="nav__link">Prestasi</a>
                     </li>
                     <li class="nav__item nav__item-dropdown">
-                        <a href="#" class="nav__link nav__link-dropdown">
+                        <a href="#" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
                             Akademik <i class="fas fa-chevron-down dropdown-icon"></i>
                         </a>
                         <ul class="dropdown__menu">
@@ -1137,8 +1191,7 @@
     <section id="sambutan" class="section">
         <div class="container sambutan-container">
             <div class="sambutan-foto animate-on-scroll">
-                <img src="src/img/firmawati-anwar.png"
-                    alt="Foto Kepala Madrasah Firmawati Anwar">
+                <img src="src/img/firmawati-anwar.png" alt="Foto Kepala Madrasah Firmawati Anwar">
             </div>
             <div class="sambutan-teks animate-on-scroll">
                 <span class="quote-mark">“</span>
@@ -1331,19 +1384,19 @@
 
 
             /*==================== DROPDOWN MENU (FOR MOBILE) ====================*/
+            /*==================== DROPDOWN MENU (FOR MOBILE) ====================*/
             const dropdownLinks = document.querySelectorAll('.nav__link-dropdown');
 
             dropdownLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    // Check if in mobile view by checking the navToggle's display style
+                    // Cek apakah dalam tampilan mobile
                     if (window.getComputedStyle(navToggle).display !== 'none') {
-                        e.preventDefault(); // Prevent link from navigating
+                        e.preventDefault(); // Mencegah link berpindah halaman
                         const dropdownItem = link.parentElement;
                         dropdownItem.classList.toggle('submenu-active');
                     }
                 });
             });
-
 
             /*==================== HEADER SCROLL EFFECT ====================*/
             const header = document.getElementById('header');
