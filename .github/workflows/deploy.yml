@@ -49,4 +49,4 @@ jobs:
               echo "⚠️ Not a git repository. Skipping git pull."
             fi
             
-            echo "🚀 Deployment script finished."
+           
