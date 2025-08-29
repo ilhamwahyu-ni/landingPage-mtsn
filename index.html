@@ -16,7 +16,7 @@
     <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- KODE CSS (GAYA TAMPILAN) DIMASUKKAN DI SINI -->
+    <!-- CSS Styles -->
     <style>
         /* ==================== ROOT VARIABLES & GLOBAL STYLES ==================== */
         :root {
@@ -76,6 +76,144 @@
 
         .text-center {
             text-align: center;
+        }
+
+        /* ==================== HEADER & NAVIGATION ==================== */
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: transparent;
+            /* Initially transparent */
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Scrolled header style */
+        .header-scrolled {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            height: 4.5rem;
+            /* Header height */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo img {
+            height: 40px;
+            /* Adjust logo size */
+            display: block;
+        }
+
+        .nav__list {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            /* Space between menu items */
+            list-style: none;
+        }
+
+        .nav__link {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--white);
+            /* Initial link color (over hero) */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav__link:hover {
+            color: var(--gold);
+        }
+
+        /* Link color when header is scrolled */
+        .header-scrolled .nav__link {
+            color: var(--dark-green);
+        }
+
+        .header-scrolled .nav__link:hover {
+            color: var(--gold);
+        }
+
+        .nav__btn {
+            padding: 0.7rem 1.8rem;
+            /* Smaller button in nav */
+        }
+
+        /* Close & toggle buttons hidden on desktop */
+        .nav__close,
+        .nav__toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* ==================== BREAKPOINTS (RESPONSIVE) ==================== */
+        /* For tablets and mobiles */
+        @media screen and (max-width: 992px) {
+            .nav__menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                /* Hide off-screen */
+                width: 70%;
+                height: 100%;
+                background-color: var(--dark-green);
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+                transition: right 0.4s ease-in-out;
+            }
+
+            /* .show-menu class will be added by JavaScript */
+            .show-menu {
+                right: 0;
+            }
+
+            .nav__list {
+                flex-direction: column;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .nav__link {
+                color: var(--white);
+                /* Link color in mobile menu is always white */
+                font-size: 1.2rem;
+            }
+
+            .nav__link:hover {
+                color: var(--gold);
+            }
+
+            /* Scrolled header link color doesn't affect mobile menu */
+            .header-scrolled .nav__link {
+                color: var(--white);
+            }
+
+            .nav__close {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 2rem;
+                color: var(--gold);
+            }
+
+            .nav__toggle {
+                display: block;
+                font-size: 1.8rem;
+                color: var(--white);
+                /* Initial hamburger icon color */
+            }
+
+            /* Hamburger icon color when header is scrolled */
+            .header-scrolled .nav__toggle {
+                color: var(--dark-green);
+            }
         }
 
         /* ==================== BUTTONS ==================== */
@@ -605,7 +743,7 @@
             transform: translateY(0);
         }
 
-        /* Delay untuk animasi bertingkat */
+        /* Delay for staggered animations */
         .hero-content h1 {
             transition-delay: 0.2s;
         }
@@ -763,6 +901,45 @@
 </head>
 
 <body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                <img src="src/img/logo-mtsn.png" alt="Logo MTsN">
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#hero" class="nav__link">Beranda</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#sambutan" class="nav__link">Profil</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#prestasi" class="nav__link">Prestasi</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#fasilitas" class="nav__link">Fasilitas</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#sejarah" class="nav__link">Sejarah</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#cta" class="btn btn-primary nav__btn">PPDB 2026</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
 
     <!-- ==================== HERO SECTION ==================== -->
     <section id="hero">
@@ -772,7 +949,7 @@
             <p class="animate-on-scroll">Selamat Datang di MTsN Kota Padang Panjang. Tempat Lahirnya Generasi Bertaqwa,
                 Kompetitif, dan Inovatif.</p>
             <div class="hero-buttons animate-on-scroll">
-                <a href="#cta" class="btn btn-primary">DAFTAR PPDB 2025/2026</a>
+                <a href="#cta" class="btn btn-primary">DAFTAR PPDB 2026/2027</a>
                 <a href="#unggulan" class="btn btn-secondary">Jelajahi Program Kami ></a>
             </div>
         </div>
@@ -796,9 +973,8 @@
                 </div>
                 <div class="pillar-card animate-on-scroll">
                     <i class="fas fa-palette pillar-icon"></i>
-                    <h3>Bakat Mendunia</h3>
-                    <p>Mengasah talenta siswa di bidang seni, olahraga, dan ekstrakurikuler hingga level nasional dan
-                        internasional.</p>
+                    <h3>Bakat</h3>
+                    <p>Mengasah talenta siswa di bidang seni, olahraga, dan ekstrakurikuler hingga level nasional.</p>
                 </div>
             </div>
         </div>
@@ -830,11 +1006,11 @@
             </div>
             <div class="prestasi-list animate-on-scroll">
                 <div class="prestasi-item">
-                    <h4>Kasyifatul Ulya</h4>
+                    <h4>.............</h4>
                     <p>Juara 1 Lomba Lukis Tingkat Nasional</p>
                 </div>
                 <div class="prestasi-item">
-                    <h4>Habib Adzanul Haqqi</h4>
+                    <h4>.............</h4>
                     <p>Medali Emas Kompetisi Sains Madrasah</p>
                 </div>
             </div>
@@ -845,7 +1021,7 @@
     <section id="sambutan" class="section">
         <div class="container sambutan-container">
             <div class="sambutan-foto animate-on-scroll">
-                <img src="https://placehold.co/450x550/8e44ad/ffffff?text=Firmawati+Anwar,+S.Ag"
+                <img src="src/img/firmawati-anwar.png"
                     alt="Foto Kepala Madrasah Firmawati Anwar">
             </div>
             <div class="sambutan-teks animate-on-scroll">
@@ -857,7 +1033,7 @@
                     juga pribadi yang berakhlak mulia dan siap menghadapi tantangan global. Mari bersama kami wujudkan
                     generasi masa depan yang membanggakan.
                 </p>
-                <h4>Firmawati Anwar, S.Ag, M.Pd</h4>
+                <h4>Firmawati Anwar, S.Pd, M.Pd</h4>
                 <p>Kepala MTsN Kota Padang Panjang</p>
             </div>
         </div>
@@ -902,7 +1078,7 @@
                 <div class="collage-item item-2 animate-on-scroll"><img
                         src="https://placehold.co/400x500/f1c40f/ffffff?text=Sholat+Dhuha" alt="Sholat Dhuha"></div>
                 <div class="collage-item item-3 animate-on-scroll"><img
-                        src="https://placehold.co/400x300/3498db/ffffff?text=Lab+IPA" alt="Lab IPA"></div>
+                        src="https://placehold.co/400x300/3498db/ffffff?text=Lab+IPA" alt="Randai"></div>
                 <div class="collage-item item-4 animate-on-scroll"><img
                         src="https://placehold.co/500x350/2ecc71/ffffff?text=Asrama+Siswa" alt="Asrama Siswa"></div>
                 <div class="collage-item item-5 animate-on-scroll"><img
@@ -914,7 +1090,7 @@
     <!-- ==================== JEJAK SEJARAH ==================== -->
     <section id="sejarah" class="section">
         <div class="container">
-            <h2 class="section-title text-center">jJejak Sejarah yang Mengakar Kuat</h2>
+            <h2 class="section-title text-center">Jejak Sejarah yang Mengakar Kuat</h2>
             <div class="timeline">
                 <div class="timeline-item animate-on-scroll">
                     <div class="timeline-content">
@@ -948,7 +1124,7 @@
     <!-- ==================== CALL TO ACTION (CTA) ==================== -->
     <section id="cta" class="section">
         <div class="container text-center">
-            <h2 class="section-title animate-on-scroll">Brgabunglah dengan Keluarga Juara MTsN Kota Padang Panjang!
+            <h2 class="section-title animate-on-scroll">Bergabunglah dengan Keluarga Juara MTsN Kota Padang Panjang!
             </h2>
             <div class="cta-cards">
                 <div class="cta-card animate-on-scroll">
@@ -975,7 +1151,7 @@
     <footer>
         <div class="container footer-container">
             <div class="footer-col">
-                <img src="https://placehold.co/150x50/ffffff/014225?text=Logo+MTsN" alt="Logo MTsN Kota Padang Panjang"
+                <img src="src/img/logo-mtsn.png" alt="Logo MTsN Kota Padang Panjang"
                     class="footer-logo">
                 <p>Jl. H. Agus Salim No.13, Guguk Malintang, Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat
                     27128</p>
@@ -987,10 +1163,11 @@
                     <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Tautan Cepatt</h4>
+                <h4>Tautan Cepat</h4>
                 <ul>
                     <li><a href="#">Profil Madrasah</a></li>
                     <li><a href="#prestasi">Prestasi</a></li>
@@ -1006,10 +1183,50 @@
     </footer>
 
 
-    <!-- KODE JAVASCRIPT (INTERAKTIVITAS) DIMASUKKAN DI SINI -->
+    <!-- JavaScript for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
+            /*==================== MOBILE MENU TOGGLE ====================*/
+            const navMenu = document.getElementById('nav-menu');
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+
+            // Show menu
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.add('show-menu');
+                });
+            }
+
+            // Hide menu
+            if (navClose) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.remove('show-menu');
+                });
+            }
+
+            // Hide menu when a link is clicked
+            const navLinks = document.querySelectorAll('.nav__link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('show-menu');
+                });
+            });
+
+
+            /*==================== HEADER SCROLL EFFECT ====================*/
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY >= 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+
+            /*==================== ANIMATE ELEMENTS ON SCROLL ====================*/
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1023,6 +1240,8 @@
             const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
             elementsToAnimate.forEach(el => observer.observe(el));
 
+
+            /*==================== STATS COUNTER ANIMATION ====================*/
             const statsObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1036,7 +1255,7 @@
 
                             const updateCounter = () => {
                                 const current = +counter.innerText;
-                                const increment = target / 200;
+                                const increment = target / 200; // Speed of animation
 
                                 if (current < target) {
                                     counter.innerText = `${Math.ceil(current + increment)}`;
