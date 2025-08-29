@@ -43,7 +43,7 @@ jobs:
             echo "🔍 Checking if directory is a git repository..."
             if [ -d .git ]; then
               echo "✅ It is a git repository. Pulling latest changes from main branch..."
-              sudo -u www git pull origin main
+              git pull origin main
               echo "🎉 Pull successful!"
             else
               echo "⚠️ Not a git repository. Skipping git pull."
