@@ -37,16 +37,7 @@ jobs:
           port: 22
           # Skrip yang akan dijalankan di server
           script: |
-            echo "🚚 Connecting to server and moving to directory..."
-            cd /www/wwwroot/mtsnpadangpanjang.sch.id
-            
-            echo "🔍 Checking if directory is a git repository..."
-            if [ -d .git ]; then
-              echo "✅ It is a git repository. Pulling latest changes from main branch..."
-              git pull origin main
-              echo "🎉 Pull successful!"
-            else
-              echo "⚠️ Not a git repository. Skipping git pull."
-            fi
+            whoami
+            ls -al
             
            
