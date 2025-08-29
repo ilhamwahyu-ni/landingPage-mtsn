@@ -24,5 +24,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /www/wwwroot/mtsnpadangpanjang.sch.id/landingPage-mtsn
+            cd /www/wwwroot/mtsnpadangpanjang.sch.id
             sudo -u www git pull origin main
