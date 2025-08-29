@@ -14,5 +14,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /www/wwwroot/mtsnpadangpanjang.sch.id
-            sudo -u www git pull origin main
+            
+           
+            cd /www/wwwroot/mtsnpadangpanjang.sch.id/landingPage-mtsn
+            sudo -u www GIT_SSH_COMMAND="ssh -i /root/.ssh/landingpage_mtsn -o IdentitiesOnly=yes" git pull origin main
+
