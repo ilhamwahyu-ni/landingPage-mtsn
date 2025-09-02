@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi & Misi - MTsN Kota Padang Panjang</title>
+
+    <!-- Google Fonts: Poppins, Lato, Great Vibes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;600;700;900&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS Styles (Copied from index.html for consistency) -->
+    <style>
+        /* ==================== ROOT VARIABLES & GLOBAL STYLES ==================== */
+        :root {
+            --dark-green: #014225;
+            --light-green: #EAF3F0;
+            --gold: #D4AF37;
+            --gold-hover: #EACD69;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --cream: #FAF8F0;
+            --text-dark: #333333;
+            --text-light: #F1F1F1;
+
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            --font-script: 'Great Vibes', cursive;
+
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Memastikan box-sizing konsisten */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden; /* Mencegah scroll horizontal pada body */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* ==================== HEADER & NAVIGATION ==================== */
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: transparent;
+            /* Initially transparent */
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Scrolled header style */
+        .header-scrolled {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            height: 4.5rem;
+            /* Header height */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo img {
+            height: 40px;
+            /* Adjust logo size */
+            display: block;
+        }
+
+        .nav__list {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            /* Space between menu items */
+            list-style: none;
+        }
+
+        .nav__link {
+            font-family: var(--font-primary);
+            font-weight: 600;
+            color: var(--white);
+            /* Initial link color (over hero) */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav__link:hover {
+            color: var(--gold);
+        }
+
+        /* Link color when header is scrolled */
+        .header-scrolled .nav__link {
+            color: var(--dark-green);
+        }
+
+        .header-scrolled .nav__link:hover {
+            color: var(--gold);
+        }
+
+        .nav__item-dropdown {
+            position: relative;
+        }
+
+        .nav__link-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown__menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            list-style: none;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-medium);
+            min-width: 220px;
+            z-index: 10;
+        }
+
+        .nav__item-dropdown:hover .dropdown__menu {
+            display: block;
+        }
+
+        .nav__item-dropdown:hover .dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .dropdown__link {
+            color: var(--dark-green);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown__link:hover {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+
+        .nav__btn {
+            padding: 0.7rem 1.8rem;
+            /* Smaller button in nav */
+        }
+
+        /* Close & toggle buttons hidden on desktop */
+        .nav__close,
+        .nav__toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* ==================== BREAKPOINTS (RESPONSIVE) ==================== */
+        /* For tablets and mobiles */
+        @media screen and (max-width: 992px) {
+            .nav__menu {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hide off-screen */
+                width: 80%; /* Lebar yang sedikit lebih kecil untuk konsistensi */
+                max-width: 300px; /* Mencegah terlalu lebar di layar besar yang kecil */
+                height: 100vh; /* Gunakan 100vh untuk tinggi penuh viewport */
+                background-color: var(--dark-green);
+                padding: 6rem 1.5rem 2rem 1.5rem; /* Kurangi padding horizontal */
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+                transition: right 0.4s ease-in-out;
+                z-index: 1000; /* Memastikan menu di atas elemen lain */
+            }
+
+            /* .show-menu class will be added by JavaScript */
+            .show-menu {
+                right: 0;
+            }
+
+            .nav__list {
+                flex-direction: column;
+                gap: 1.5rem; /* Adjusted gap for dropdown */
+                text-align: left; /* Ubah ke left untuk tampilan yang lebih rapi */
+                align-items: flex-start; /* Sejajarkan item ke kiri */
+                width: 100%; /* Pastikan daftar memenuhi lebar menu */
+            }
+
+            .nav__link {
+                color: var(--white);
+                /* Link color in mobile menu is always white */
+                font-size: 1.1rem; /* Sedikit kurangi ukuran font */
+                width: 100%; /* Buat link memenuhi lebar */
+                display: block; /* Pastikan link adalah block element */
+                padding: 0.5rem 0; /* Tambahkan sedikit padding vertikal */
+            }
+
+            .nav__link:hover {
+                color: var(--gold);
+            }
+
+            /* Scrolled header link color doesn't affect mobile menu */
+            .header-scrolled .nav__link {
+                color: var(--white);
+            }
+
+            /* Mobile Dropdown Styles */
+            .nav__item-dropdown {
+                width: 100%; /* Pastikan item dropdown memenuhi lebar */
+            }
+
+            .nav__link-dropdown {
+                justify-content: space-between; /* Sebarkan teks dan ikon */
+                width: 100%; /* Buat link dropdown memenuhi lebar */
+            }
+
+            .nav__item-dropdown:hover .dropdown__menu {
+                display: none;
+                /* Disable hover effect on mobile */
+            }
+
+            .nav__item-dropdown:hover .dropdown-icon {
+                transform: rotate(0deg);
+            }
+
+            .dropdown__menu {
+                position: static;
+                display: block;
+                background-color: transparent;
+                box-shadow: none;
+                padding: 0 0 0 1.5rem; /* Hanya beri padding kiri untuk indentasi */
+                border-radius: 0;
+                min-width: auto;
+                width: calc(100% - 1.5rem); /* Hitung ulang lebar untuk mengakomodasi padding kiri */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                margin-top: 0.5rem; /* Kurangi margin atas */
+            }
+
+            .dropdown__item {
+                padding-left: 0; /* Hapus padding kiri bawaan */
+                margin-bottom: 0.5rem; /* Tambahkan margin bawah antar item */
+            }
+
+            .dropdown__link {
+                color: var(--white);
+                padding: 0.5rem 0; /* Kurangi padding vertikal */
+                background-color: rgba(255, 255, 255, 0.05); /* Latar belakang lembut */
+                border-radius: 4px; /* Sudut membulat kecil */
+                width: 100%; /* Buat link memenuhi lebar dropdown */
+                display: block; /* Pastikan link adalah block element */
+            }
+
+            .dropdown__link:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: var(--gold);
+            }
+
+            /* Active state for mobile dropdown */
+            .nav__item-dropdown.submenu-active .dropdown__menu {
+                max-height: 500px; /* A large enough value to show items */
+                margin-top: 0.5rem; /* Sesuaikan margin atas */
+            }
+
+            .nav__item-dropdown.submenu-active .dropdown-icon {
+                transform: rotate(180deg);
+            }
+
+
+            .nav__close {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 2rem;
+                color: var(--gold);
+                z-index: 1001; /* Memastikan close button di atas menu */
+            }
+
+            .nav__toggle {
+                display: block;
+                font-size: 1.8rem;
+                color: var(--white);
+                /* Initial hamburger icon color */
+                z-index: 999; /* Memastikan toggle di bawah menu tapi di atas konten */
+                position: relative; /* Diperlukan untuk z-index */
+            }
+
+            /* Hamburger icon color when header is scrolled */
+            .header-scrolled .nav__toggle {
+                color: var(--dark-green);
+            }
+            
+            /* Memastikan tidak ada scroll horizontal pada menu */
+            .nav__menu::-webkit-scrollbar {
+                display: none; /* Safari and Chrome */
+            }
+            .nav__menu {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+        }
+
+        /* ==================== BUTTONS ==================== */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--gold), var(--gold-hover));
+            color: var(--dark-green);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-secondary {
+            color: var(--white);
+            background: transparent;
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--dark-green);
+        }
+
+         /* ==================== CONTENT SECTION ==================== */
+         #visi-misi-content {
+            background-color: var(--off-white);
+            padding: 8rem 0 4rem 0; /* Add top padding to account for fixed header */
+        }
+
+        .content-wrapper {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .content-wrapper h2 {
+            font-family: var(--font-primary);
+            font-size: 2rem;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .content-wrapper p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .content-wrapper ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .content-wrapper li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding-top: 4rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+            max-width: 180px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--gold);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .content-wrapper {
+                padding: 2rem;
+            }
+
+            .content-wrapper h2 {
+                font-size: 1.7rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header class="header header-scrolled" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="src/img/logo-mtsn.png" alt="Logo MTsN">
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html#hero" class="nav__link">Beranda</a>
+                    </li>
+                    <li class="nav__item nav__item-dropdown">
+                        <a href="index.html#sambutan" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profil <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li class="dropdown__item">
+                                <a href="index.html#sambutan" class="dropdown__link">Sambutan</a>
+                            </li>
+                            <li class="dropdown__item">
+                                <a href="visi-misi.html" class="dropdown__link">Visi & Misi</a>
+                            </li>
+                            <!-- Tambahkan item profil lainnya di sini jika ada -->
+                        </ul>
+                    </li>
+                    <li class="nav__item nav__item-dropdown">
+                        <a href="index.html#prestasi" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                            Prestasi <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li class="dropdown__item">
+                                <a href="index.html#prestasi" class="dropdown__link">Panggung Prestasi Nasional</a>
+                            </li>
+                            <li class="dropdown__item">
+                                <a href="prestasi.html" class="dropdown__link">Prestasi Terbaru</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav__item nav__item-dropdown">
+                        <a href="#" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                            Akademik <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li class="dropdown__item">
+                                <a href="jadwal-pelajaran.html" class="dropdown__link">Jadwal Pelajaran</a>
+                            </li>
+                            <li class="dropdown__item">
+                                <a href="#" class="dropdown__link">Kalender Akademik</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#fasilitas" class="nav__link">Fasilitas</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#sejarah" class="nav__link">Sejarah</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="index.html#cta" class="btn btn-primary nav__btn">PPDB 2026</a>
+                    </li>
+                </ul>
+
+                <div class="nav__close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="visi-misi-content" class="section">
+        <div class="container">
+            <div class="content-wrapper animate-on-scroll">
+                <h1 class="section-title text-center">Visi & Misi MTsN Kota Padang Panjang</h1>
+
+                <h2>Visi</h2>
+                <p>
+                    Terwujudnya insan yang taat beragama, intelektual, mandiri dan berkepribadian berlandaskan kebersamaan.
+                </p>
+
+                <h2>Misi</h2>
+                <ul>
+                    <li>Menyelenggarakan pendidikan yang berorientasi pada mutu lulusan berkualitas secara keilmuan, moral, dan sosial.</li>
+                    <li>Mengembangkan sumber daya insani unggul di bidang IPTEK dan IMTAQ melalui proses pembelajaran efektif dan efisien.</li>
+                    <li>Menumbuhkembangkan semangat keunggulan dalam bidang ilmu pengetahuan, teknologi, agama, dan budaya.</li>
+                    <li>Meningkatkan wawasan IPTEK dan IMTAQ.</li>
+                    <li>Menerapkan pembelajaran aktif, inovatif, kreatif, efektif dan menyenangkan (PAIKEM).</li>
+                    <li>Meningkatkan prestasi akademik dan non-akademik.</li>
+                    <li>Mengoptimalkan penghayatan nilai-nilai agama sebagai sumber kearifan dan kesantunan bertindak.</li>
+                    <li>Mewujudkan kondisi madrasah yang disiplin dalam belajar dan beribadah, dengan lingkungan islami dan akhlakul karimah.</li>
+                    <li>Menumbuhkembangkan minat baca dan menulis.</li>
+                </ul>
+
+                <!-- Tambahkan Tujuan atau nilai tambah jika diperlukan -->
+                <!--
+                <h2>Tujuan</h2>
+                <p>Deskripsi tujuan sekolah...</p>
+                -->
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-col">
+                <img src="src/img/logo-mtsn.png" alt="Logo MTsN Kota Padang Panjang" class="footer-logo">
+                <p>Jl. H. Agus Salim No.13, Guguk Malintang, Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat
+                    27128</p>
+                <p><strong>Telepon:</strong> (0752) 123-456<br><strong>Email:</strong> info@mtsnpadangpanjang.sch.id</p>
+            </div>
+            <div class="footer-col">
+                <h4>Media Sosial</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tautan Cepat</h4>
+                <ul>
+                    <li><a href="index.html#sambutan">Profil Madrasah</a></li>
+                                        <li><a href="prestasi.html">Prestasi</a></li> <!-- Diarahkan ke halaman khusus prestasi -->
+                    <li><a href="index.html#cta">PPDB 2026</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MTsN Kota Padang Panjang. All Rights Reserved. <br> Developed by <a href="https://ilwa.my.id"
+                    target="_blank" rel="noopener noreferrer" class="footer-link">ilwa.my.id</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity (Copied relevant parts from index.html) -->
+    <script>
+         document.addEventListener('DOMContentLoaded', function () {
+
+            /*==================== MOBILE MENU TOGGLE ====================*/
+            const navMenu = document.getElementById('nav-menu');
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+
+            // Show menu
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.add('show-menu');
+                });
+            }
+
+            // Hide menu
+            if (navClose && navMenu) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.remove('show-menu');
+                });
+            }
+
+            // Hide menu when a non-dropdown link is clicked
+            const navLinks = document.querySelectorAll('.nav__link:not(.nav__link-dropdown)');
+            navLinks.forEach(link => {
+                // Periksa apakah link ini ada dalam menu mobile (navMenu)
+                if (navMenu && navMenu.contains(link)) {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('show-menu');
+                    });
+                }
+            });
+
+
+            /*==================== DROPDOWN MENU (FOR MOBILE) ====================*/
+            const dropdownLinks = document.querySelectorAll('.nav__link-dropdown');
+
+            // Fungsi untuk menutup semua dropdown
+            function closeAllDropdowns(except = null) {
+                document.querySelectorAll('.nav__item-dropdown').forEach(item => {
+                    if (item !== except) {
+                        item.classList.remove('submenu-active');
+                        const icon = item.querySelector('.dropdown-icon');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            }
+
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Cek apakah dalam tampilan mobile
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault(); // Mencegah link berpindah halaman
+                        
+                        const dropdownItem = link.parentElement;
+                        const icon = link.querySelector('.dropdown-icon');
+                        
+                        if (dropdownItem) {
+                            // Tutup semua dropdown lain sebelum toggle yang sekarang
+                            closeAllDropdowns(dropdownItem);
+                            
+                            // Toggle dropdown yang diklik
+                            dropdownItem.classList.toggle('submenu-active');
+                            
+                            // Rotasi ikon
+                            if (icon) {
+                                if (dropdownItem.classList.contains('submenu-active')) {
+                                    icon.style.transform = 'rotate(180deg)';
+                                } else {
+                                    icon.style.transform = 'rotate(0deg)';
+                                }
+                            }
+                        }
+                    }
+                    // Jika tidak dalam tampilan mobile, biarkan link berfungsi normal (tidak perlu e.preventDefault())
+                });
+            });
+
+            /*==================== HEADER SCROLL EFFECT ====================*/
+            const header = document.getElementById('header');
+            if (header) {
+                 window.addEventListener('scroll', () => {
+                    if (window.scrollY >= 50) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                    }
+                });
+            }
+
+             /*==================== ANIMATE ELEMENTS ON SCROLL ====================*/
+             const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => observer.observe(el));
+
+        });
+    </script>
+</body>
+
+</html>
