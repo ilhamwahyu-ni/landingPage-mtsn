@@ -6,17 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prestasi - MTsN Kota Padang Panjang</title>
 
-    <!-- Google Fonts: Poppins, Lato, Great Vibes -->
+    <!-- Google Fonts: Poppins (Utama), Lato (Secondary) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;600;700;900&family=Great+Vibes&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- CSS Styles (Copied from index.html for consistency) -->
+    <!-- CSS Styles -->
     <style>
         /* ==================== ROOT VARIABLES & GLOBAL STYLES ==================== */
         :root {
@@ -29,19 +27,22 @@
             --cream: #FAF8F0;
             --text-dark: #333333;
             --text-light: #F1F1F1;
+            --text-gray: #666666;
+            --accent-blue: #1E90FF;
+            --accent-purple: #9370DB;
 
             --font-primary: 'Poppins', sans-serif;
             --font-secondary: 'Lato', sans-serif;
-            --font-script: 'Great Vibes', cursive;
 
             --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
             --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+            --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.15);
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Memastikan box-sizing konsisten */
+            box-sizing: border-box;
         }
 
         html {
@@ -50,10 +51,10 @@
 
         body {
             font-family: var(--font-secondary);
-            background-color: var(--white);
+            background-color: var(--off-white);
             color: var(--text-dark);
             line-height: 1.7;
-            overflow-x: hidden; /* Mencegah scroll horizontal pada body */
+            overflow-x: hidden;
         }
 
         .container {
@@ -69,9 +70,30 @@
         .section-title {
             font-family: var(--font-primary);
             font-size: 2.8rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--dark-green);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--gold-hover));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-secondary);
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 400;
         }
 
         .text-center {
@@ -85,13 +107,18 @@
             top: 0;
             left: 0;
             z-index: 100;
-            background-color: var(--white); /* Halaman prestasi, header selalu putih */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow default untuk header halaman ini */
+            background-color: transparent;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* Scrolled header style */
+        .header-scrolled {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav {
             height: 4.5rem;
-            /* Header height */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -99,27 +126,36 @@
 
         .nav__logo img {
             height: 40px;
-            /* Adjust logo size */
             display: block;
         }
 
         .nav__list {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
-            /* Space between menu items */
+            gap: 2rem;
             list-style: none;
         }
 
         .nav__link {
             font-family: var(--font-primary);
             font-weight: 600;
-            color: var(--dark-green); /* Link color default untuk header halaman ini (putih) */
+            font-size: 1rem;
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav__link:hover {
+            color: var(--gold);
+        }
+
+        .header-scrolled .nav__link {
+            color: var(--dark-green);
+        }
+
+        .header-scrolled .nav__link:hover {
             color: var(--gold);
         }
 
@@ -134,7 +170,7 @@
         }
 
         .dropdown-icon {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             transition: transform 0.3s ease;
         }
 
@@ -145,7 +181,7 @@
             left: 0;
             background-color: var(--white);
             list-style: none;
-            padding: 1rem;
+            padding: 0.75rem 0;
             border-radius: 8px;
             box-shadow: var(--shadow-medium);
             min-width: 220px;
@@ -164,23 +200,22 @@
             color: var(--dark-green);
             text-decoration: none;
             display: block;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .dropdown__link:hover {
             background-color: var(--light-green);
             color: var(--dark-green);
+            padding-left: 1.75rem;
         }
-
 
         .nav__btn {
-            padding: 0.7rem 1.8rem;
-            /* Smaller button in nav */
+            padding: 0.6rem 1.5rem;
+            font-size: 0.95rem;
         }
 
-        /* Close & toggle buttons hidden on desktop */
         .nav__close,
         .nav__toggle {
             display: none;
@@ -188,66 +223,47 @@
         }
 
         /* ==================== BREAKPOINTS (RESPONSIVE) ==================== */
-        /* For tablets and mobiles */
         @media screen and (max-width: 992px) {
             .nav__menu {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hide off-screen */
-                width: 80%; /* Lebar yang sedikit lebih kecil untuk konsistensi */
-                max-width: 300px; /* Mencegah terlalu lebar di layar besar yang kecil */
-                height: 100vh; /* Gunakan 100vh untuk tinggi penuh viewport */
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
                 background-color: var(--dark-green);
-                padding: 6rem 1.5rem 2rem 1.5rem; /* Kurangi padding horizontal */
+                padding: 6rem 1.5rem 2rem 1.5rem;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
                 transition: right 0.4s ease-in-out;
-                z-index: 1000; /* Memastikan menu di atas elemen lain */
+                z-index: 1000;
             }
 
-            /* .show-menu class will be added by JavaScript */
             .show-menu {
                 right: 0;
             }
 
             .nav__list {
                 flex-direction: column;
-                gap: 1.5rem; /* Adjusted gap for dropdown */
-                text-align: left; /* Ubah ke left untuk tampilan yang lebih rapi */
-                align-items: flex-start; /* Sejajarkan item ke kiri */
-                width: 100%; /* Pastikan daftar memenuhi lebar menu */
+                gap: 1.5rem;
+                text-align: left;
+                align-items: flex-start;
+                width: 100%;
             }
 
             .nav__link {
                 color: var(--white);
-                /* Link color in mobile menu is always white */
-                font-size: 1.1rem; /* Sedikit kurangi ukuran font */
-                width: 100%; /* Buat link memenuhi lebar */
-                display: block; /* Pastikan link adalah block element */
-                padding: 0.5rem 0; /* Tambahkan sedikit padding vertikal */
+                font-size: 1.1rem;
+                width: 100%;
+                display: block;
+                padding: 0.5rem 0;
             }
 
-            .nav__link:hover {
-                color: var(--gold);
-            }
-
-            /* Scrolled header link color doesn't affect mobile menu */
             .header-scrolled .nav__link {
                 color: var(--white);
             }
 
-            /* Mobile Dropdown Styles */
-            .nav__item-dropdown {
-                width: 100%; /* Pastikan item dropdown memenuhi lebar */
-            }
-
-            .nav__link-dropdown {
-                justify-content: space-between; /* Sebarkan teks dan ikon */
-                width: 100%; /* Buat link dropdown memenuhi lebar */
-            }
-
             .nav__item-dropdown:hover .dropdown__menu {
                 display: none;
-                /* Disable hover effect on mobile */
             }
 
             .nav__item-dropdown:hover .dropdown-icon {
@@ -259,45 +275,44 @@
                 display: block;
                 background-color: transparent;
                 box-shadow: none;
-                padding: 0 0 0 1.5rem; /* Hanya beri padding kiri untuk indentasi */
+                padding: 0 0 0 1.5rem;
                 border-radius: 0;
                 min-width: auto;
-                width: calc(100% - 1.5rem); /* Hitung ulang lebar untuk mengakomodasi padding kiri */
+                width: calc(100% - 1.5rem);
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease-in-out;
-                margin-top: 0.5rem; /* Kurangi margin atas */
+                margin-top: 0.5rem;
             }
 
             .dropdown__item {
-                padding-left: 0; /* Hapus padding kiri bawaan */
-                margin-bottom: 0.5rem; /* Tambahkan margin bawah antar item */
+                padding-left: 0;
+                margin-bottom: 0.5rem;
             }
 
             .dropdown__link {
                 color: var(--white);
-                padding: 0.5rem 0; /* Kurangi padding vertikal */
-                background-color: rgba(255, 255, 255, 0.05); /* Latar belakang lembut */
-                border-radius: 4px; /* Sudut membulat kecil */
-                width: 100%; /* Buat link memenuhi lebar dropdown */
-                display: block; /* Pastikan link adalah block element */
+                padding: 0.5rem 0;
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: 4px;
+                width: 100%;
+                display: block;
             }
 
             .dropdown__link:hover {
                 background-color: rgba(255, 255, 255, 0.1);
                 color: var(--gold);
+                padding-left: 0.25rem;
             }
 
-            /* Active state for mobile dropdown */
             .nav__item-dropdown.submenu-active .dropdown__menu {
-                max-height: 500px; /* A large enough value to show items */
-                margin-top: 0.5rem; /* Sesuaikan margin atas */
+                max-height: 500px;
+                margin-top: 0.5rem;
             }
 
             .nav__item-dropdown.submenu-active .dropdown-icon {
                 transform: rotate(180deg);
             }
-
 
             .nav__close {
                 display: block;
@@ -306,93 +321,263 @@
                 right: 1.5rem;
                 font-size: 2rem;
                 color: var(--gold);
-                z-index: 1001; /* Memastikan close button di atas menu */
+                z-index: 1001;
             }
 
             .nav__toggle {
                 display: block;
                 font-size: 1.8rem;
-                color: var(--dark-green); /* Toggle icon color default untuk header halaman ini */
-                z-index: 999; /* Memastikan toggle di bawah menu tapi di atas konten */
-                position: relative; /* Diperlukan untuk z-index */
+                color: var(--white);
+                z-index: 999;
+                position: relative;
+            }
+
+            .header-scrolled .nav__toggle {
+                color: var(--dark-green);
             }
             
-            /* Memastikan tidak ada scroll horizontal pada menu */
             .nav__menu::-webkit-scrollbar {
-                display: none; /* Safari and Chrome */
+                display: none;
             }
             .nav__menu {
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
+                -ms-overflow-style: none;
+                scrollbar-width: none;
             }
         }
 
-        /* ==================== CONTENT SECTION ==================== */
-        #prestasi-content {
-            background-color: var(--off-white);
-            padding: 8rem 0 4rem 0; /* Add top padding to account for fixed header */
-        }
-
-        .content-wrapper {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow-light);
-        }
-
-        .content-wrapper h2 {
-            font-family: var(--font-primary);
-            font-size: 2rem;
-            color: var(--dark-green);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 0.5rem;
-        }
-
-        .prestasi-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            border-left: 5px solid var(--gold);
-            background-color: var(--off-white);
-            border-radius: 8px;
-        }
-
-        .prestasi-item h3 {
-             font-family: var(--font-primary);
-             color: var(--dark-green);
-             margin-bottom: 0.5rem;
-        }
-
-        .prestasi-item p {
-            margin-bottom: 0.5rem;
-        }
-
-        .prestasi-item ul {
-            margin-top: 0.5rem;
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-
-        .prestasi-item li {
-            margin-bottom: 0.3rem;
-        }
-
-        .prestasi-date {
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-        }
-
-        .source-link {
+        /* ==================== BUTTONS ==================== */
+        .btn {
             display: inline-block;
-            margin-top: 0.5rem;
-            color: var(--gold);
-            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-family: var(--font-primary);
             font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
         }
 
-        .source-link:hover {
-            text-decoration: underline;
+        .btn-primary {
+            background: linear-gradient(45deg, var(--gold), var(--gold-hover));
+            color: var(--dark-green);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--dark-green);
+            border: 2px solid var(--dark-green);
+        }
+
+        .btn-outline:hover {
+            background: var(--dark-green);
+            color: var(--white);
+        }
+
+        /* ==================== HERO PRESTASI ==================== */
+        #hero-prestasi {
+            height: 60vh;
+            width: 100%;
+            background: linear-gradient(rgba(1, 66, 37, 0.7), rgba(1, 66, 37, 0.7)), url('src/img/pres.png') no-repeat center center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 4.5rem; /* Account for fixed header */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(1, 66, 37, 0.85), rgba(212, 175, 55, 0.2));
+        }
+
+        .hero-content-prestasi {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        #hero-prestasi h1 {
+            font-family: var(--font-primary);
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #hero-prestasi p {
+            font-size: 1.2rem;
+            margin: 0 auto 2rem auto;
+            font-weight: 400;
+            max-width: 700px;
+        }
+
+        /* ==================== FILTER & SEARCH ==================== */
+        .filter-section {
+            background-color: var(--white);
+            padding: 2rem 0;
+            box-shadow: var(--shadow-light);
+            margin-bottom: 3rem;
+            position: sticky;
+            top: 4.5rem; /* Header height */
+            z-index: 90;
+        }
+
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(45deg, var(--gold), var(--gold-hover));
+            color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--light-green);
+            border-radius: 50px;
+            font-family: var(--font-secondary);
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* ==================== PRESTASI GRID ==================== */
+        .prestasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .prestasi-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .prestasi-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            left: -25px;
+            background: var(--gold);
+            color: var(--dark-green);
+            padding: 0.3rem 2rem;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-green);
+            font-size: 4rem;
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-family: var(--font-primary);
+            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin-bottom: 0.7rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .card-date {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-category {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-excerpt {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .card-link:hover {
+            gap: 0.8rem;
         }
 
         /* ==================== FOOTER ==================== */
@@ -411,8 +596,20 @@
 
         .footer-col h4 {
             font-family: var(--font-primary);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
         }
 
         .footer-logo {
@@ -420,32 +617,53 @@
             max-width: 180px;
         }
 
+        .footer-col p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
         .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            font-size: 1.8rem;
-            margin-right: 1.5rem;
-            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
 
         .social-icons a:hover {
-            color: var(--gold);
+            background-color: var(--gold);
+            transform: translateY(-3px);
         }
 
         .footer-col ul {
             list-style: none;
         }
 
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
         .footer-col ul li a {
             color: var(--text-light);
             text-decoration: none;
             display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease, padding-left 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .footer-col ul li a:hover {
             color: var(--gold);
-            padding-left: 5px;
+            transform: translateX(5px);
         }
 
         .footer-bottom {
@@ -467,22 +685,82 @@
             text-decoration: underline;
         }
 
+        /* ==================== ANIMATIONS ON SCROLL ==================== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ==================== RESPONSIVE DESIGN ==================== */
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
+            .prestasi-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
 
-            .content-wrapper {
-                padding: 2rem;
+            #hero-prestasi h1 {
+                font-size: 2.5rem;
             }
 
-            .content-wrapper h2 {
-                font-size: 1.7rem;
+            #hero-prestasi p {
+                font-size: 1.1rem;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .prestasi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
             }
 
             .footer-container {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero-prestasi {
+                height: 50vh;
+            }
+
+            #hero-prestasi h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .card-content h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -512,11 +790,10 @@
                             <li class="dropdown__item">
                                 <a href="visi-misi.html" class="dropdown__link">Visi & Misi</a>
                             </li>
-                            <!-- Tambahkan item profil lainnya di sini jika ada -->
                         </ul>
                     </li>
                     <li class="nav__item nav__item-dropdown">
-                        <!-- Tautan menuju halaman prestasi baru, dengan kelas 'active' atau gaya khusus jika diinginkan -->
+                        <!-- Menu Prestasi aktif -->
                         <a href="prestasi.html" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
                             Prestasi <i class="fas fa-chevron-down dropdown-icon"></i>
                         </a>
@@ -525,8 +802,20 @@
                                 <a href="index.html#prestasi" class="dropdown__link">Panggung Prestasi Nasional</a>
                             </li>
                             <li class="dropdown__item">
-                                <!-- Item aktif -->
                                 <a href="prestasi.html" class="dropdown__link" style="background-color: var(--light-green);">Prestasi Terbaru</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav__item nav__item-dropdown">
+                        <a href="index.html#fasilitas" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                            Fasilitas <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li class="dropdown__item">
+                                <a href="index.html#fasilitas" class="dropdown__link">Fasilitas Utama</a>
+                            </li>
+                            <li class="dropdown__item">
+                                <a href="fasilitas.html" class="dropdown__link">Fasilitas Lengkap</a>
                             </li>
                         </ul>
                     </li>
@@ -542,9 +831,6 @@
                                 <a href="#" class="dropdown__link">Kalender Akademik</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav__item">
-                        <a href="index.html#fasilitas" class="nav__link">Fasilitas</a>
                     </li>
                     <li class="nav__item">
                         <a href="index.html#sejarah" class="nav__link">Sejarah</a>
@@ -565,71 +851,140 @@
         </nav>
     </header>
 
-    <!-- ==================== MAIN CONTENT ==================== -->
-    <main id="prestasi-content" class="section">
-        <div class="container">
-            <div class="content-wrapper animate-on-scroll">
-                <h1 class="section-title text-center">Prestasi MTsN Kota Padang Panjang Tahun 2025</h1>
+    <!-- ==================== HERO PRESTASI ==================== -->
+    <section id="hero-prestasi">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content-prestasi">
+            <h1 class="animate-on-scroll">Prestasi Gemilang MTsN</h1>
+            <p class="animate-on-scroll">Mewujudkan Generasi Unggul Melalui Pencapaian Luar Biasa di Berbagai Bidang</p>
+            <a href="#prestasi-list" class="btn btn-outline animate-on-scroll">Lihat Prestasi</a>
+        </div>
+    </section>
 
+    <!-- ==================== FILTER & SEARCH ==================== -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="akademik">Akademik</button>
+                <button class="filter-btn" data-filter="seni">Seni & Budaya</button>
+                <button class="filter-btn" data-filter="olahraga">Olahraga</button>
+                <input type="text" class="search-box" placeholder="Cari prestasi...">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="prestasi-list" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Prestasi Terbaru</h2>
+            <p class="section-subtitle animate-on-scroll">Kumpulan pencapaian luar biasa yang diraih oleh siswa-siswi MTsN Kota Padang Panjang</p>
+
+            <div class="prestasi-grid">
                 <!-- Prestasi Item 1 -->
-                <div class="prestasi-item animate-on-scroll">
-                    <h3>Juara Umum Lomba Sumatra Thawalib Parabek</h3>
-                    <p class="prestasi-date">28 Agustus 2025</p>
-                    <p>MTsN Padang Panjang meraih Juara Umum serta prestasi lainnya:</p>
-                    <ul>
-                        <li>Juara 1 Matematika</li>
-                        <li>Juara 1 Tahfiz Al-Qur’an</li>
-                        <li>Beberapa juara lain di berbagai kategori.</li>
-                    </ul>
-                    <p>Kepala sekolah menyampaikan apresiasi atas prestasi yang merupakan hasil kerja keras dan komitmen bersama.</p>
-                    <a href="https://www.kiprahkita.com/2025/08/mtsn-padang-panjang-raih-juara-umum-di.html" target="_blank" rel="noopener noreferrer" class="source-link">Sumber Artikel</a>
+                <div class="prestasi-card animate-on-scroll" data-category="akademik">
+                    <div class="card-badge">Akademik</div>
+                    <div class="card-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Juara Umum Lomba Sumatra Thawalib Parabek</h3>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar"></i> 28 Agustus 2025</span>
+                            <span class="card-category"><i class="fas fa-award"></i> Akademik</span>
+                        </div>
+                        <p class="card-excerpt">
+                            MTsN Padang Panjang meraih Juara Umum serta prestasi lainnya di bidang Matematika dan Tahfiz Al-Qur’an.
+                        </p>
+                        <a href="https://www.kiprahkita.com/2025/08/mtsn-padang-panjang-raih-juara-umum-di.html" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Prestasi Item 2 -->
-                <div class="prestasi-item animate-on-scroll">
-                    <h3>Dua Siswa Berprestasi di Tingkat Nasional</h3>
-                    <p class="prestasi-date">Juli 2025</p>
-                    <ul>
-                        <li><strong>Zahwa Rafilla:</strong> Medali Perunggu dan Perak di kompetisi sains nasional bidang Bahasa Inggris dan Kedokteran Dasar.</li>
-                        <li><strong>Muhammad Hamzah Rafsanjani:</strong> Juara 1 tingkat provinsi dan medali Perak nasional Olimpiade Geografi 2025.</li>
-                    </ul>
-                    <p>Kepala Kantor Kemenag Padang Panjang sangat mengapresiasi prestasi ini.</p>
-                    <a href="https://www.kiprahkita.com/2025/07/jejak-prestasi-siswa-mtsn-dalam.html" target="_blank" rel="noopener noreferrer" class="source-link">Sumber Artikel</a>
+                <div class="prestasi-card animate-on-scroll" data-category="akademik">
+                    <div class="card-badge">Akademik</div>
+                    <div class="card-image">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Dua Siswa Berprestasi di Tingkat Nasional</h3>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar"></i> Juli 2025</span>
+                            <span class="card-category"><i class="fas fa-award"></i> Akademik</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Zahwa Rafilla dan Muhammad Hamzah Rafsanjani meraih medali dan juara di kompetisi sains nasional.
+                        </p>
+                        <a href="https://www.kiprahkita.com/2025/07/jejak-prestasi-siswa-mtsn-dalam.html" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Prestasi Item 3 -->
-                <div class="prestasi-item animate-on-scroll">
-                    <h3>Empat Siswa Raih Medali Emas dan Perak di Olimpiade Sains Siswa Nasional (OSSN)</h3>
-                    <p class="prestasi-date">Tahun 2024 (Relevan sebagai pencapaian besar dan inspirasi bagi 2025)</p>
-                    <p>Berikut bidang yang diraih:</p>
-                    <ul>
-                        <li>IPA</li>
-                        <li>Biologi</li>
-                        <li>Fisika</li>
-                        <li>Kedokteran Dasar</li>
-                    </ul>
-                    <a href="https://sumbar.kemenag.go.id/berita/post/empat-siswa-mtsn-padang-panjang-raih-gelar-sang-juara-di-olimpiade-sains-siswa-nasional" target="_blank" rel="noopener noreferrer" class="source-link">Sumber Artikel</a>
+                <div class="prestasi-card animate-on-scroll" data-category="akademik">
+                    <div class="card-badge">Akademik</div>
+                    <div class="card-image">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Empat Siswa Raih Medali Emas dan Perak di OSSN</h3>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar"></i> 2024</span>
+                            <span class="card-category"><i class="fas fa-award"></i> Akademik</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Prestasi gemilang di Olimpiade Sains Siswa Nasional di berbagai bidang sains.
+                        </p>
+                        <a href="https://sumbar.kemenag.go.id/berita/post/empat-siswa-mtsn-padang-panjang-raih-gelar-sang-juara-di-olimpiade-sains-siswa-nasional" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Prestasi Item 4 -->
-                <div class="prestasi-item animate-on-scroll">
-                    <h3>Penghargaan Lomba Video Lagu Qasidah</h3>
-                    <p class="prestasi-date">Tingkat Provinsi Sumatera Barat</p>
-                    <p>MTsN Padang Panjang memperoleh penghargaan dalam lomba video lagu Qasidah tingkat provinsi Sumatera Barat.</p>
-                    <a href="https://www.instagram.com/p/DNXaS9lBEde/" target="_blank" rel="noopener noreferrer" class="source-link">Sumber Instagram</a>
+                <div class="prestasi-card animate-on-scroll" data-category="seni">
+                    <div class="card-badge">Seni</div>
+                    <div class="card-image">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Penghargaan Lomba Video Lagu Qasidah</h3>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar"></i> Tingkat Provinsi</span>
+                            <span class="card-category"><i class="fas fa-award"></i> Seni</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Penghargaan atas kreativitas dan kualitas produksi video lagu Qasidah.
+                        </p>
+                        <a href="https://www.instagram.com/p/DNXaS9lBEde/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Prestasi Item 5 -->
-                <div class="prestasi-item animate-on-scroll">
-                    <h3>Kegiatan & Dokumentasi</h3>
-                    <p>Prestasi dan aktivitas MTsN Padang Panjang direkam dalam akun media sosial resmi:</p>
-                    <ul>
-                        <li>Dokumentasi Pesantren Ramadhan 1446 H/2025.</li>
-                        <li>Berbagai dokumentasi lomba dan kegiatan sekolah lainnya.</li>
-                    </ul>
-                    <p><a href="https://www.youtube.com/channel/UCl2lZffYFp9t580yQCEozEg/videos" target="_blank" rel="noopener noreferrer" class="source-link">YouTube Resmi</a> | <a href="https://www.instagram.com/mtsn_padangpanjang/" target="_blank" rel="noopener noreferrer" class="source-link">Instagram Resmi</a></p>
+                <div class="prestasi-card animate-on-scroll" data-category="lainnya">
+                    <div class="card-badge">Kegiatan</div>
+                    <div class="card-image">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Dokumentasi Kegiatan & Lomba</h3>
+                        <div class="card-meta">
+                            <span class="card-date"><i class="far fa-calendar"></i> Berkelanjutan</span>
+                            <span class="card-category"><i class="fas fa-award"></i> Lainnya</span>
+                        </div>
+                        <p class="card-excerpt">
+                            Prestasi dan aktivitas MTsN Padang Panjang direkam dalam akun media sosial resmi.
+                        </p>
+                        <a href="https://www.instagram.com/mtsn_padangpanjang/" target="_blank" rel="noopener noreferrer" class="card-link">
+                            Lihat Galeri <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-
             </div>
         </div>
     </main>
@@ -639,12 +994,8 @@
         <div class="container footer-container">
             <div class="footer-col">
                 <img src="src/img/logo-mtsn.png" alt="Logo MTsN Kota Padang Panjang" class="footer-logo">
-                <p>Jl. H. Agus Salim No.13, Guguk Malintang, Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat
-                    27128</p>
+                <p>Jl. H. Agus Salim No.13, Guguk Malintang, Padang Panjang Timur, Kota Padang Panjang, Sumatera Barat 27128</p>
                 <p><strong>Telepon:</strong> (0752) 123-456<br><strong>Email:</strong> info@mtsnpadangpanjang.sch.id</p>
-            </div>
-            <div class="footer-col">
-                <h4>Media Sosial</h4>
                 <div class="social-icons">
                     <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -656,45 +1007,45 @@
                 <h4>Tautan Cepat</h4>
                 <ul>
                     <li><a href="index.html#sambutan">Profil Madrasah</a></li>
-                    <li><a href="prestasi.html">Prestasi</a></li> <!-- Diarahkan ke halaman ini -->
+                    <li><a href="prestasi.html">Prestasi</a></li>
+                    <li><a href="fasilitas.html">Fasilitas</a></li>
                     <li><a href="index.html#cta">PPDB 2026</a></li>
                     <li><a href="#">Kontak Kami</a></li>
                 </ul>
             </div>
+            <div class="footer-col">
+                <h4>Lokasi Kami</h4>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.310418694441!2d100.4177793147539!3d-0.3544449997648855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd5c504080e3a75%3A0x7d4c4e4e4e4e4e4e!2sMTsN%20Padang%20Panjang!5e0!3m2!1sen!2sid!4v1650000000000!5m2!1sen!2sid" width="100%" height="200" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MTsN Kota Padang Panjang. All Rights Reserved. <br> Developed by <a href="https://ilwa.my.id"
-                    target="_blank" rel="noopener noreferrer" class="footer-link">ilwa.my.id</a></p>
+            <p>&copy; 2025 MTsN Kota Padang Panjang. All Rights Reserved. <br> Developed by <a href="https://ilwa.my.id" target="_blank" rel="noopener noreferrer" class="footer-link">ilwa.my.id</a></p>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity (Copied relevant parts from index.html) -->
+    <!-- JavaScript for Interactivity -->
     <script>
-         document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
 
             /*==================== MOBILE MENU TOGGLE ====================*/
             const navMenu = document.getElementById('nav-menu');
             const navToggle = document.getElementById('nav-toggle');
             const navClose = document.getElementById('nav-close');
 
-            // Show menu
             if (navToggle && navMenu) {
                 navToggle.addEventListener('click', () => {
                     navMenu.classList.add('show-menu');
                 });
             }
 
-            // Hide menu
             if (navClose && navMenu) {
                 navClose.addEventListener('click', () => {
                     navMenu.classList.remove('show-menu');
                 });
             }
 
-            // Hide menu when a non-dropdown link is clicked
             const navLinks = document.querySelectorAll('.nav__link:not(.nav__link-dropdown)');
             navLinks.forEach(link => {
-                // Periksa apakah link ini ada dalam menu mobile (navMenu)
                 if (navMenu && navMenu.contains(link)) {
                     link.addEventListener('click', () => {
                         navMenu.classList.remove('show-menu');
@@ -702,11 +1053,9 @@
                 }
             });
 
-
             /*==================== DROPDOWN MENU (FOR MOBILE) ====================*/
             const dropdownLinks = document.querySelectorAll('.nav__link-dropdown');
 
-            // Fungsi untuk menutup semua dropdown
             function closeAllDropdowns(except = null) {
                 document.querySelectorAll('.nav__item-dropdown').forEach(item => {
                     if (item !== except) {
@@ -721,21 +1070,15 @@
 
             dropdownLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    // Cek apakah dalam tampilan mobile
                     if (window.innerWidth <= 992) {
-                        e.preventDefault(); // Mencegah link berpindah halaman
-                        
+                        e.preventDefault();
                         const dropdownItem = link.parentElement;
                         const icon = link.querySelector('.dropdown-icon');
                         
                         if (dropdownItem) {
-                            // Tutup semua dropdown lain sebelum toggle yang sekarang
                             closeAllDropdowns(dropdownItem);
-                            
-                            // Toggle dropdown yang diklik
                             dropdownItem.classList.toggle('submenu-active');
                             
-                            // Rotasi ikon
                             if (icon) {
                                 if (dropdownItem.classList.contains('submenu-active')) {
                                     icon.style.transform = 'rotate(180deg)';
@@ -745,12 +1088,23 @@
                             }
                         }
                     }
-                    // Jika tidak dalam tampilan mobile, biarkan link berfungsi normal (tidak perlu e.preventDefault())
                 });
             });
 
-             /*==================== ANIMATE ELEMENTS ON SCROLL ====================*/
-             const observer = new IntersectionObserver((entries) => {
+            /*==================== HEADER SCROLL EFFECT ====================*/
+            const header = document.getElementById('header');
+            if (header) {
+                 window.addEventListener('scroll', () => {
+                    if (window.scrollY >= 50) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                    }
+                });
+            }
+
+            /*==================== ANIMATE ELEMENTS ON SCROLL ====================*/
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
@@ -762,6 +1116,56 @@
 
             const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
             elementsToAnimate.forEach(el => observer.observe(el));
+
+            /*==================== PRESTASI FILTERING ====================*/
+            const filterContainer = document.querySelector('.filter-container');
+            const searchBox = document.querySelector('.search-box');
+            const prestasiCards = document.querySelectorAll('.prestasi-card');
+
+            if (filterContainer) {
+                filterContainer.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('filter-btn')) {
+                        // Remove active class from all buttons
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                        // Add active class to clicked button
+                        e.target.classList.add('active');
+                        
+                        const filterValue = e.target.getAttribute('data-filter');
+                        
+                        prestasiCards.forEach(card => {
+                            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            }
+
+            if (searchBox) {
+                searchBox.addEventListener('input', () => {
+                    const searchTerm = searchBox.value.toLowerCase();
+                    
+                    prestasiCards.forEach(card => {
+                        const title = card.querySelector('h3').textContent.toLowerCase();
+                        const excerpt = card.querySelector('.card-excerpt').textContent.toLowerCase();
+                        
+                        if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                            card.style.display = 'flex';
+                            // Ensure it's visible if filtered out by category
+                            if (document.querySelector('.filter-btn.active').getAttribute('data-filter') !== 'all') {
+                                const category = card.getAttribute('data-category');
+                                if (category !== document.querySelector('.filter-btn.active').getAttribute('data-filter')) {
+                                    card.style.display = 'none';
+                                }
+                            }
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
 
         });
     </script>

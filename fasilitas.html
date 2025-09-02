@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visi & Misi - MTsN Kota Padang Panjang</title>
+    <title>Fasilitas - MTsN Kota Padang Panjang</title>
 
     <!-- Google Fonts: Poppins, Lato, Great Vibes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,15 +85,8 @@
             top: 0;
             left: 0;
             z-index: 100;
-            background-color: transparent;
-            /* Initially transparent */
-            transition: background-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        /* Scrolled header style */
-        .header-scrolled {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--white); /* Halaman fasilitas, header selalu putih */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow default untuk header halaman ini */
         }
 
         .nav {
@@ -121,22 +114,12 @@
         .nav__link {
             font-family: var(--font-primary);
             font-weight: 600;
-            color: var(--white);
-            /* Initial link color (over hero) */
+            color: var(--dark-green); /* Link color default untuk header halaman ini (putih) */
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .nav__link:hover {
-            color: var(--gold);
-        }
-
-        /* Link color when header is scrolled */
-        .header-scrolled .nav__link {
-            color: var(--dark-green);
-        }
-
-        .header-scrolled .nav__link:hover {
             color: var(--gold);
         }
 
@@ -329,15 +312,9 @@
             .nav__toggle {
                 display: block;
                 font-size: 1.8rem;
-                color: var(--white);
-                /* Initial hamburger icon color */
+                color: var(--dark-green); /* Toggle icon color default untuk header halaman ini */
                 z-index: 999; /* Memastikan toggle di bawah menu tapi di atas konten */
                 position: relative; /* Diperlukan untuk z-index */
-            }
-
-            /* Hamburger icon color when header is scrolled */
-            .header-scrolled .nav__toggle {
-                color: var(--dark-green);
             }
             
             /* Memastikan tidak ada scroll horizontal pada menu */
@@ -350,44 +327,8 @@
             }
         }
 
-        /* ==================== BUTTONS ==================== */
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-family: var(--font-primary);
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--gold), var(--gold-hover));
-            color: var(--dark-green);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(212, 175, 55, 0.6);
-        }
-
-        .btn-secondary {
-            color: var(--white);
-            background: transparent;
-            border: 2px solid var(--white);
-            margin-left: 1rem;
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--dark-green);
-        }
-
-         /* ==================== CONTENT SECTION ==================== */
-         #visi-misi-content {
+        /* ==================== CONTENT SECTION ==================== */
+        #fasilitas-content {
             background-color: var(--off-white);
             padding: 8rem 0 4rem 0; /* Add top padding to account for fixed header */
         }
@@ -408,18 +349,39 @@
             padding-bottom: 0.5rem;
         }
 
-        .content-wrapper p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
+        .fasilitas-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-left: 5px solid var(--gold);
+            background-color: var(--off-white);
+            border-radius: 8px;
         }
 
-        .content-wrapper ul {
-            margin-bottom: 1.5rem;
+        .fasilitas-item h3 {
+             font-family: var(--font-primary);
+             color: var(--dark-green);
+             margin-bottom: 0.5rem;
+             display: flex;
+             align-items: center;
+             gap: 0.5rem;
+        }
+        
+        .fasilitas-item h3 i {
+            color: var(--dark-green);
+        }
+
+        .fasilitas-item p {
+            margin-bottom: 0.5rem;
+        }
+
+        .fasilitas-item ul {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
             padding-left: 1.5rem;
         }
 
-        .content-wrapper li {
-            margin-bottom: 0.5rem;
+        .fasilitas-item li {
+            margin-bottom: 0.3rem;
         }
 
         /* ==================== FOOTER ==================== */
@@ -517,7 +479,7 @@
 
 <body>
     <!-- ==================== HEADER ==================== -->
-    <header class="header header-scrolled" id="header">
+    <header class="header" id="header">
         <nav class="nav container">
             <a href="index.html" class="nav__logo">
                 <img src="src/img/logo-mtsn.png" alt="Logo MTsN">
@@ -556,6 +518,21 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item-dropdown">
+                        <!-- Tautan menuju halaman fasilitas baru, dengan kelas 'active' atau gaya khusus jika diinginkan -->
+                        <a href="fasilitas.html" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                            Fasilitas <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown__menu">
+                            <li class="dropdown__item">
+                                <a href="index.html#fasilitas" class="dropdown__link">Fasilitas Utama</a>
+                            </li>
+                            <li class="dropdown__item">
+                                <!-- Item aktif -->
+                                <a href="fasilitas.html" class="dropdown__link" style="background-color: var(--light-green);">Fasilitas Lengkap</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav__item nav__item-dropdown">
                         <a href="#" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
                             Akademik <i class="fas fa-chevron-down dropdown-icon"></i>
                         </a>
@@ -565,19 +542,6 @@
                             </li>
                             <li class="dropdown__item">
                                 <a href="#" class="dropdown__link">Kalender Akademik</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav__item nav__item-dropdown">
-                        <a href="index.html#fasilitas" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
-                            Fasilitas <i class="fas fa-chevron-down dropdown-icon"></i>
-                        </a>
-                        <ul class="dropdown__menu">
-                            <li class="dropdown__item">
-                                <a href="index.html#fasilitas" class="dropdown__link">Fasilitas Utama</a>
-                            </li>
-                            <li class="dropdown__item">
-                                <a href="fasilitas.html" class="dropdown__link">Fasilitas Lengkap</a>
                             </li>
                         </ul>
                     </li>
@@ -601,34 +565,46 @@
     </header>
 
     <!-- ==================== MAIN CONTENT ==================== -->
-    <main id="visi-misi-content" class="section">
+    <main id="fasilitas-content" class="section">
         <div class="container">
             <div class="content-wrapper animate-on-scroll">
-                <h1 class="section-title text-center">Visi & Misi MTsN Kota Padang Panjang</h1>
+                <h1 class="section-title text-center">Fasilitas MTsN Kota Padang Panjang</h1>
 
-                <h2>Visi</h2>
-                <p>
-                    Terwujudnya insan yang taat beragama, intelektual, mandiri dan berkepribadian berlandaskan kebersamaan.
-                </p>
+                <!-- Fasilitas Utama -->
+                <div class="fasilitas-item animate-on-scroll">
+                    <h3><i class="fas fa-building"></i> Fasilitas Utama</h3>
+                    <ul>
+                        <li><strong>Ruang Kelas Modern:</strong> Dilengkapi dengan meja dan kursi baru untuk kenyamanan belajar, khususnya untuk kelas-kelas berprestasi.</li>
+                        <li><strong>Laboratorium Komputer:</strong> Tersedia perangkat terkini untuk mendukung pembelajaran digital dan teknologi informasi.</li>
+                        <li><strong>Masjid:</strong> Sarana untuk kegiatan keagamaan dan pembinaan spiritual siswa.</li>
+                        <li><strong>Kelas Seni:</strong> Ruang dan studio modern untuk mengembangkan kreativitas siswa dalam bidang penyiaran dan konten digital.</li>
+                        <li><strong>Perpustakaan:</strong> Koleksi buku yang lengkap dan fasilitas belajar untuk mendukung literasi siswa.</li>
+                        <li><strong>Lapangan Olahraga:</strong> Fasilitas untuk berbagai aktivitas olahraga guna mendukung bakat dan kesehatan siswa.</li>
+                    </ul>
+                </div>
+                
+                <!-- Fasilitas Pendukung Lainnya -->
+                <div class="fasilitas-item animate-on-scroll">
+                    <h3><i class="fas fa-tools"></i> Fasilitas Pendukung Lainnya</h3>
+                    <ul>
+                        <li><strong>Asrama:</strong> Menyelenggarakan program pembinaan santri, termasuk kegiatan muroja'ah (mengulang hafalan) dan pembinaan karakter harian.</li>
+                        <li><strong>Program Ekstrakurikuler:</strong> Beragam kegiatan untuk mengembangkan minat dan bakat siswa di bidang olahraga, seni, dan keagamaan.</li>
+                        <li><strong>Bimbingan Belajar Tambahan (Bimbel):</strong> Sebagai bagian dari pusat proses belajar mengajar (PBM) tambahan untuk menunjang prestasi akademik siswa.</li>
+                        <li><strong>Podcast dan Media Digital:</strong> Platform untuk kreativitas siswa dalam produksi konten dan pendidikan literasi digital.</li>
+                    </ul>
+                </div>
+                
+                <!-- Cara Mendapatkan Informasi -->
+                <div class="fasilitas-item animate-on-scroll">
+                    <h3><i class="fas fa-info-circle"></i> Cara Mendapatkan Informasi Fasilitas Terbaru</h3>
+                    <ul>
+                        <li>Dokumentasi dan pengumuman resmi di <a href="https://mtsnpadangpanjang.sch.id" target="_blank" rel="noopener noreferrer">website MTsN Kota Padang Panjang</a> yang diperbarui secara berkala.</li>
+                        <li>Akun media sosial resmi seperti <a href="https://www.instagram.com/mtsn_padangpanjang/" target="_blank" rel="noopener noreferrer">Instagram MTsN Padang Panjang</a> dan <a href="https://www.instagram.com/asrama_mtsn_padangpanjang/?hl=id" target="_blank" rel="noopener noreferrer">akun khusus Asrama</a> untuk foto, video, dan update kegiatan.</li>
+                        <li>Wawancara dan pengumpulan data langsung dari staf pengelola madrasah.</li>
+                        <li>Berita dan artikel resmi di media pendidikan yang meliput perkembangan sarana-prasarana MTsN.</li>
+                    </ul>
+                </div>
 
-                <h2>Misi</h2>
-                <ul>
-                    <li>Menyelenggarakan pendidikan yang berorientasi pada mutu lulusan berkualitas secara keilmuan, moral, dan sosial.</li>
-                    <li>Mengembangkan sumber daya insani unggul di bidang IPTEK dan IMTAQ melalui proses pembelajaran efektif dan efisien.</li>
-                    <li>Menumbuhkembangkan semangat keunggulan dalam bidang ilmu pengetahuan, teknologi, agama, dan budaya.</li>
-                    <li>Meningkatkan wawasan IPTEK dan IMTAQ.</li>
-                    <li>Menerapkan pembelajaran aktif, inovatif, kreatif, efektif dan menyenangkan (PAIKEM).</li>
-                    <li>Meningkatkan prestasi akademik dan non-akademik.</li>
-                    <li>Mengoptimalkan penghayatan nilai-nilai agama sebagai sumber kearifan dan kesantunan bertindak.</li>
-                    <li>Mewujudkan kondisi madrasah yang disiplin dalam belajar dan beribadah, dengan lingkungan islami dan akhlakul karimah.</li>
-                    <li>Menumbuhkembangkan minat baca dan menulis.</li>
-                </ul>
-
-                <!-- Tambahkan Tujuan atau nilai tambah jika diperlukan -->
-                <!--
-                <h2>Tujuan</h2>
-                <p>Deskripsi tujuan sekolah...</p>
-                -->
             </div>
         </div>
     </main>
@@ -655,8 +631,8 @@
                 <h4>Tautan Cepat</h4>
                 <ul>
                     <li><a href="index.html#sambutan">Profil Madrasah</a></li>
-                    <li><a href="prestasi.html">Prestasi</a></li> <!-- Diarahkan ke halaman khusus prestasi -->
-                    <li><a href="fasilitas.html">Fasilitas</a></li> <!-- Diarahkan ke halaman khusus fasilitas -->
+                    <li><a href="prestasi.html">Prestasi</a></li>
+                    <li><a href="fasilitas.html">Fasilitas</a></li> <!-- Diarahkan ke halaman ini -->
                     <li><a href="index.html#cta">PPDB 2026</a></li>
                     <li><a href="#">Kontak Kami</a></li>
                 </ul>
@@ -748,18 +724,6 @@
                     // Jika tidak dalam tampilan mobile, biarkan link berfungsi normal (tidak perlu e.preventDefault())
                 });
             });
-
-            /*==================== HEADER SCROLL EFFECT ====================*/
-            const header = document.getElementById('header');
-            if (header) {
-                 window.addEventListener('scroll', () => {
-                    if (window.scrollY >= 50) {
-                        header.classList.add('header-scrolled');
-                    } else {
-                        header.classList.remove('header-scrolled');
-                    }
-                });
-            }
 
              /*==================== ANIMATE ELEMENTS ON SCROLL ====================*/
              const observer = new IntersectionObserver((entries) => {
