@@ -41,7 +41,8 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Memastikan box-sizing konsisten */
+            box-sizing: border-box;
+            /* Memastikan box-sizing konsisten */
         }
 
         html {
@@ -53,7 +54,8 @@
             background-color: var(--white);
             color: var(--text-dark);
             line-height: 1.7;
-            overflow-x: hidden; /* Mencegah scroll horizontal pada body */
+            overflow-x: hidden;
+            /* Mencegah scroll horizontal pada body */
         }
 
         .container {
@@ -210,15 +212,21 @@
             .nav__menu {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hide off-screen */
-                width: 80%; /* Lebar yang sedikit lebih kecil untuk konsistensi */
-                max-width: 300px; /* Mencegah terlalu lebar di layar besar yang kecil */
-                height: 100vh; /* Gunakan 100vh untuk tinggi penuh viewport */
+                right: -100%;
+                /* Hide off-screen */
+                width: 80%;
+                /* Lebar yang sedikit lebih kecil untuk konsistensi */
+                max-width: 300px;
+                /* Mencegah terlalu lebar di layar besar yang kecil */
+                height: 100vh;
+                /* Gunakan 100vh untuk tinggi penuh viewport */
                 background-color: var(--dark-green);
-                padding: 6rem 1.5rem 2rem 1.5rem; /* Kurangi padding horizontal */
+                padding: 6rem 1.5rem 2rem 1.5rem;
+                /* Kurangi padding horizontal */
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
                 transition: right 0.4s ease-in-out;
-                z-index: 1000; /* Memastikan menu di atas elemen lain */
+                z-index: 1000;
+                /* Memastikan menu di atas elemen lain */
             }
 
             /* .show-menu class will be added by JavaScript */
@@ -228,19 +236,27 @@
 
             .nav__list {
                 flex-direction: column;
-                gap: 1.5rem; /* Adjusted gap for dropdown */
-                text-align: left; /* Ubah ke left untuk tampilan yang lebih rapi */
-                align-items: flex-start; /* Sejajarkan item ke kiri */
-                width: 100%; /* Pastikan daftar memenuhi lebar menu */
+                gap: 1.5rem;
+                /* Adjusted gap for dropdown */
+                text-align: left;
+                /* Ubah ke left untuk tampilan yang lebih rapi */
+                align-items: flex-start;
+                /* Sejajarkan item ke kiri */
+                width: 100%;
+                /* Pastikan daftar memenuhi lebar menu */
             }
 
             .nav__link {
                 color: var(--white);
                 /* Link color in mobile menu is always white */
-                font-size: 1.1rem; /* Sedikit kurangi ukuran font */
-                width: 100%; /* Buat link memenuhi lebar */
-                display: block; /* Pastikan link adalah block element */
-                padding: 0.5rem 0; /* Tambahkan sedikit padding vertikal */
+                font-size: 1.1rem;
+                /* Sedikit kurangi ukuran font */
+                width: 100%;
+                /* Buat link memenuhi lebar */
+                display: block;
+                /* Pastikan link adalah block element */
+                padding: 0.5rem 0;
+                /* Tambahkan sedikit padding vertikal */
             }
 
             .nav__link:hover {
@@ -254,12 +270,15 @@
 
             /* Mobile Dropdown Styles */
             .nav__item-dropdown {
-                width: 100%; /* Pastikan item dropdown memenuhi lebar */
+                width: 100%;
+                /* Pastikan item dropdown memenuhi lebar */
             }
 
             .nav__link-dropdown {
-                justify-content: space-between; /* Sebarkan teks dan ikon */
-                width: 100%; /* Buat link dropdown memenuhi lebar */
+                justify-content: space-between;
+                /* Sebarkan teks dan ikon */
+                width: 100%;
+                /* Buat link dropdown memenuhi lebar */
             }
 
             .nav__item-dropdown:hover .dropdown__menu {
@@ -276,28 +295,38 @@
                 display: block;
                 background-color: transparent;
                 box-shadow: none;
-                padding: 0 0 0 1.5rem; /* Hanya beri padding kiri untuk indentasi */
+                padding: 0 0 0 1.5rem;
+                /* Hanya beri padding kiri untuk indentasi */
                 border-radius: 0;
                 min-width: auto;
-                width: calc(100% - 1.5rem); /* Hitung ulang lebar untuk mengakomodasi padding kiri */
+                width: calc(100% - 1.5rem);
+                /* Hitung ulang lebar untuk mengakomodasi padding kiri */
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.4s ease-in-out;
-                margin-top: 0.5rem; /* Kurangi margin atas */
+                margin-top: 0.5rem;
+                /* Kurangi margin atas */
             }
 
             .dropdown__item {
-                padding-left: 0; /* Hapus padding kiri bawaan */
-                margin-bottom: 0.5rem; /* Tambahkan margin bawah antar item */
+                padding-left: 0;
+                /* Hapus padding kiri bawaan */
+                margin-bottom: 0.5rem;
+                /* Tambahkan margin bawah antar item */
             }
 
             .dropdown__link {
                 color: var(--white);
-                padding: 0.5rem 0; /* Kurangi padding vertikal */
-                background-color: rgba(255, 255, 255, 0.05); /* Latar belakang lembut */
-                border-radius: 4px; /* Sudut membulat kecil */
-                width: 100%; /* Buat link memenuhi lebar dropdown */
-                display: block; /* Pastikan link adalah block element */
+                padding: 0.5rem 0;
+                /* Kurangi padding vertikal */
+                background-color: rgba(255, 255, 255, 0.05);
+                /* Latar belakang lembut */
+                border-radius: 4px;
+                /* Sudut membulat kecil */
+                width: 100%;
+                /* Buat link memenuhi lebar dropdown */
+                display: block;
+                /* Pastikan link adalah block element */
             }
 
             .dropdown__link:hover {
@@ -307,8 +336,10 @@
 
             /* Active state for mobile dropdown */
             .nav__item-dropdown.submenu-active .dropdown__menu {
-                max-height: 500px; /* A large enough value to show items */
-                margin-top: 0.5rem; /* Sesuaikan margin atas */
+                max-height: 500px;
+                /* A large enough value to show items */
+                margin-top: 0.5rem;
+                /* Sesuaikan margin atas */
             }
 
             .nav__item-dropdown.submenu-active .dropdown-icon {
@@ -323,7 +354,8 @@
                 right: 1.5rem;
                 font-size: 2rem;
                 color: var(--gold);
-                z-index: 1001; /* Memastikan close button di atas menu */
+                z-index: 1001;
+                /* Memastikan close button di atas menu */
             }
 
             .nav__toggle {
@@ -331,22 +363,28 @@
                 font-size: 1.8rem;
                 color: var(--white);
                 /* Initial hamburger icon color */
-                z-index: 999; /* Memastikan toggle di bawah menu tapi di atas konten */
-                position: relative; /* Diperlukan untuk z-index */
+                z-index: 999;
+                /* Memastikan toggle di bawah menu tapi di atas konten */
+                position: relative;
+                /* Diperlukan untuk z-index */
             }
 
             /* Hamburger icon color when header is scrolled */
             .header-scrolled .nav__toggle {
                 color: var(--dark-green);
             }
-            
+
             /* Memastikan tidak ada scroll horizontal pada menu */
             .nav__menu::-webkit-scrollbar {
-                display: none; /* Safari and Chrome */
+                display: none;
+                /* Safari and Chrome */
             }
+
             .nav__menu {
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
         }
 
@@ -1102,7 +1140,8 @@
                         <a href="#hero" class="nav__link">Beranda</a>
                     </li>
                     <li class="nav__item nav__item-dropdown">
-                        <a href="#sambutan" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#sambutan" class="nav__link nav__link-dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Profil <i class="fas fa-chevron-down dropdown-icon"></i>
                         </a>
                         <ul class="dropdown__menu">
@@ -1116,7 +1155,8 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item-dropdown">
-                        <a href="#prestasi" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#prestasi" class="nav__link nav__link-dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Prestasi <i class="fas fa-chevron-down dropdown-icon"></i>
                         </a>
                         <ul class="dropdown__menu">
@@ -1142,7 +1182,8 @@
                         </ul>
                     </li>
                     <li class="nav__item nav__item-dropdown">
-                        <a href="#fasilitas" class="nav__link nav__link-dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#fasilitas" class="nav__link nav__link-dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Fasilitas <i class="fas fa-chevron-down dropdown-icon"></i>
                         </a>
                         <ul class="dropdown__menu">
@@ -1158,7 +1199,9 @@
                         <a href="#sejarah" class="nav__link">Sejarah</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#cta" class="btn btn-primary nav__btn">PPDB 2026</a>
+                        <a href="https://omdi.mtsnpadangpanjang.sch.id/" class="btn btn-primary nav__btn"
+                            target="_blank">OMDI TSANCOFA
+                            7ᵗʰ</a>
                     </li>
                 </ul>
 
@@ -1181,7 +1224,8 @@
             <p class="animate-on-scroll">Selamat Datang di MTsN Kota Padang Panjang. Tempat Lahirnya Generasi Bertaqwa,
                 Kompetitif, dan Inovatif.</p>
             <div class="hero-buttons animate-on-scroll">
-                <a href="#cta" class="btn btn-primary">DAFTAR PPDB 2026/2026</a>
+                <a href="https://omdi.mtsnpadangpanjang.sch.id/" class="btn btn-primary" target="_blank">Daftar OMDI
+                    7</a>
                 <a href="#unggulan" class="btn btn-secondary">Jelajahi Program Kami ></a>
             </div>
         </div>
@@ -1304,19 +1348,16 @@
         <div class="container">
             <h2 class="section-title text-center">Lebih dari Sekadar Sekolah</h2>
             <div class="photo-collage">
-                <div class="collage-item item-1 animate-on-scroll"><img
-                        src="src/img/podcast.jpg" alt="Senam Pagi"></div>
-                <div class="collage-item item-2 animate-on-scroll"><img
-                        src="src/img/pres.png" alt="Prestasi"></div>                        
-                <div class="collage-item item-3 animate-on-scroll"><img
-                        src="src/img/labor.png" alt="Randai"></div>
-                <div class="collage-item item-4 animate-on-scroll"><img
-                        src="src/img/bola.jpg" alt="Bola"></div>
-                <div class="collage-item item-5 animate-on-scroll"><img
-                        src="src/img/band.jpg" alt="Marching Band"></div>
-                <div class="collage-item item-6 animate-on-scroll"><img
-                        src="src/img/randai.png" alt="Ekstrakurikuler"></div>
-        </div>
+                <div class="collage-item item-1 animate-on-scroll"><img src="src/img/podcast.jpg" alt="Senam Pagi">
+                </div>
+                <div class="collage-item item-2 animate-on-scroll"><img src="src/img/pres.png" alt="Prestasi"></div>
+                <div class="collage-item item-3 animate-on-scroll"><img src="src/img/labor.png" alt="Randai"></div>
+                <div class="collage-item item-4 animate-on-scroll"><img src="src/img/bola.jpg" alt="Bola"></div>
+                <div class="collage-item item-5 animate-on-scroll"><img src="src/img/band.jpg" alt="Marching Band">
+                </div>
+                <div class="collage-item item-6 animate-on-scroll"><img src="src/img/randai.png" alt="Ekstrakurikuler">
+                </div>
+            </div>
     </section>
 
     <!-- ==================== JEJAK SEJARAH ==================== -->
@@ -1471,17 +1512,17 @@
                     // Cek apakah dalam tampilan mobile
                     if (window.innerWidth <= 992) {
                         e.preventDefault(); // Mencegah link berpindah halaman
-                        
+
                         const dropdownItem = link.parentElement;
                         const icon = link.querySelector('.dropdown-icon');
-                        
+
                         if (dropdownItem) {
                             // Tutup semua dropdown lain sebelum toggle yang sekarang
                             closeAllDropdowns(dropdownItem);
-                            
+
                             // Toggle dropdown yang diklik
                             dropdownItem.classList.toggle('submenu-active');
-                            
+
                             // Rotasi ikon
                             if (icon) {
                                 if (dropdownItem.classList.contains('submenu-active')) {
@@ -1499,7 +1540,7 @@
             /*==================== HEADER SCROLL EFFECT ====================*/
             const header = document.getElementById('header');
             if (header) {
-                 window.addEventListener('scroll', () => {
+                window.addEventListener('scroll', () => {
                     if (window.scrollY >= 50) {
                         header.classList.add('header-scrolled');
                     } else {
