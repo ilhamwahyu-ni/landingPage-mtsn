@@ -142,6 +142,23 @@
             color: var(--gold);
         }
 
+        /* Highlighted Nav Item for PMBM */
+        .nav__link.highlight {
+            background-color: var(--gold);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            color: var(--dark-green) !important;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .nav__link.highlight:hover {
+            transform: translateY(-2px);
+            background-color: var(--gold-hover);
+            color: var(--dark-green) !important;
+        }
+
+
         .nav__item-dropdown {
             position: relative;
         }
@@ -1199,9 +1216,7 @@
                         <a href="#sejarah" class="nav__link">Sejarah</a>
                     </li>
                     <li class="nav__item">
-                        <a href="https://omdi.mtsnpadangpanjang.sch.id/" class="btn btn-primary nav__btn"
-                            target="_blank">OMDI TSANCOFA
-                            7ᵗʰ</a>
+                        <a href="pmbm.html" class="btn btn-primary nav__btn">Info PMBM</a>
                     </li>
                 </ul>
 
@@ -1224,8 +1239,7 @@
             <p class="animate-on-scroll">Selamat Datang di MTsN Kota Padang Panjang. Tempat Lahirnya Generasi Bertaqwa,
                 Kompetitif, dan Inovatif.</p>
             <div class="hero-buttons animate-on-scroll">
-                <a href="https://omdi.mtsnpadangpanjang.sch.id/" class="btn btn-primary" target="_blank">Daftar OMDI
-                    7</a>
+                <a href="pmbm.html" class="btn btn-primary">Info PMBM</a>
                 <a href="#unggulan" class="btn btn-secondary">Jelajahi Program Kami ></a>
             </div>
         </div>
@@ -1450,8 +1464,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 MTsN Kota Padang Panjang. All Rights Reserved. <br> Developed by <a href="https://ilwa.my.id"
-                    target="_blank" rel="noopener noreferrer" class="footer-link">ilwa.my.id</a></p>
+            <p>&copy; 2026 MTsN Kota Padang Panjang. All Rights Reserved.</p>
+            <p style="margin-top: 5px; font-size: 0.9rem; opacity: 0.8;">
+                Developed by : <a href="https://ilwa.my.id" target="_blank"
+                    style="color: var(--gold); text-decoration: none; font-weight: bold; transition: 0.3s;">Ilwa</a>
+            </p>
         </div>
     </footer>
 

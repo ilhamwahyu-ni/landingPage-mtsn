@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMBM - MTsN Kota Padang Panjang</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;600;700;900&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Shared Styles (from index.html) + Specific PMBM Styles -->
+    <style>
+        /* ==================== ROOT VARIABLES & GLOBAL STYLES ==================== */
+        :root {
+            --dark-green: #014225;
+            --light-green: #EAF3F0;
+            --gold: #D4AF37;
+            --gold-hover: #EACD69;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --cream: #FAF8F0;
+            --text-dark: #333333;
+            --text-light: #666666;
+
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Lato', sans-serif;
+            --font-script: 'Great Vibes', cursive;
+
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--gold), var(--gold-hover));
+            color: var(--dark-green);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* ==================== HEADER & NAV (Simplified for Subpage) ==================== */
+        .header {
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            height: 4.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo img {
+            height: 40px;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: var(--dark-green);
+            font-weight: 600;
+            margin-left: 2rem;
+            font-family: var(--font-primary);
+        }
+
+        .nav__link:hover {
+            color: var(--gold);
+        }
+
+        /* ==================== PMBM HERO SECTION ==================== */
+        .pmbm-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(1, 66, 37, 0.85), rgba(1, 66, 37, 0.7)), url('src/img/home.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 4.5rem;
+            /* Offset fixed header */
+        }
+
+        .pmbm-hero h1 {
+            font-family: var(--font-primary);
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .pmbm-hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        /* ==================== WHY CHOOSE US ==================== */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .reason-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--gold);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .reason-icon {
+            font-size: 2rem;
+            color: var(--dark-green);
+            min-width: 40px;
+        }
+
+        .reason-text h4 {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==================== PRESTASI ==================== */
+        .achievement-section {
+            background-color: var(--light-green);
+        }
+
+        .achievement-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .achievement-item i {
+            color: var(--gold);
+        }
+
+        /* ==================== ALUR PENDAFTARAN (TIMELINE) ==================== */
+        .timeline-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ddd;
+            z-index: 0;
+            display: none;
+            /* Hidden on mobile/wrap, shown via media query if needed or kept simple */
+        }
+
+        /* Using a Card-based Timeline for better mobile responsiveness */
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            border-top: 5px solid var(--dark-green);
+            z-index: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: var(--dark-green);
+            font-weight: 700;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -3.5rem auto 1rem;
+            /* Overlap top */
+            border: 4px solid var(--white);
+        }
+
+        .step-card h3 {
+            font-family: var(--font-primary);
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        /* ==================== MEKANISME & JADWAL ==================== */
+        .mechanisms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .mechanism-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid #eee;
+        }
+
+        .mechanism-card h3 {
+            font-family: var(--font-primary);
+            color: var(--dark-green);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: '•';
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        .highlight-box {
+            background: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        .highlight-box h4 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-primary);
+        }
+
+        /* ==================== CONTACT ==================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .contact-item:hover {
+            border-color: var(--gold);
+            background: var(--cream);
+        }
+
+        .contact-name {
+            font-weight: 700;
+            color: var(--dark-green);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-number {
+            color: var(--text-light);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pmbm-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .mechanisms-grid,
+            .achievement-list {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-steps {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin: 0 auto 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <h2 style="color: var(--dark-green); font-family: var(--font-primary);">MTsN Kota Padang Panjang</h2>
+                </a>
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="index.html" class="nav__link">Beranda</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="pmbm-hero">
+        <div class="container">
+            <h1>PMBM TP 2026/2027</h1>
+            <p>Penerimaan Murid Baru Madrasah Tsanawiyah Negeri Kota Padang Panjang</p>
+            <a href="https://pmbm.mtsnpadangpanjang.sch.id" class="btn btn-primary" style="margin-top: 2rem;">Daftar
+                Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Kenapa Belajar Disini -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Kenapa MTSN Kota Padang Panjang?</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <i class="fa-solid fa-scale-balanced reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Seimbang Dunia & Akhirat</h4>
+                        <p>Kurikulum yang mengintegrasikan ilmu pengetahuan umum dan agama secara proporsional.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-mosque reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Madrasah Berasrama</h4>
+                        <p>Fasilitas asrama yang mendukung pembentukan karakter dan kemandirian siswa.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-city reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Lokasi Strategis & Nyaman</h4>
+                        <p>Terletak di kota sejuk, kota pendidikan, dan kota ramah anak.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-medal reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Siswa Berprestasi</h4>
+                        <p>Peserta didik dengan prestasi tingkat Provinsi hingga Nasional.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-chalkboard-user reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Guru Berkualitas</h4>
+                        <p>Didukung oleh 16 orang Guru berpendidikan S2 yang kompeten.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-graduation-cap reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Alumni Sukses</h4>
+                        <p>Diterima di sekolah/madrasah favorit se-Indonesia.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-school reason-icon"></i>
+                    <div class="reason-text">
+                        <h4>Fasilitas Lengkap</h4>
+                        <p>Sarana dan prasarana penunjang pembelajaran yang memadai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catatan Prestasi -->
+    <section class="section achievement-section">
+        <div class="container">
+            <h2 class="section-title">Catatan Prestasi Terbaru</h2>
+            <div class="achievement-list">
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 2 Video Project tk.International
+                    th.2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 IPA Terpadu Tingkat Nasional
+                    2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Bhs. Arab Tingkat Nasional 2025
+                </div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Fisika Tingkat Nasional 2025
+                </div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Matematika Tingkat Nasional
+                    2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 PAI Tingkat Nasional 2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 IPS Tingkat Nasional 2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Bhs. Inggris Tingkat Nasional
+                    2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Storytelling Tingkat Provinsi
+                    2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Cerdas Cermat Tk. Propinsi 2025
+                </div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 1 Karate Tingkat Nasional 2025
+                </div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 3 Pionering Tingkat Propinsi 2025
+                </div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Juara 3 MSQ Tingkat Propinsi 2025</div>
+                <div class="achievement-item"><i class="fa-solid fa-trophy"></i> Siswa terbanyak diterima MAN IC & SMA
+                    Boarding</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seleksi & Jadwal -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Mekanisme Pendaftaran</h2>
+            <div class="mechanisms-grid">
+                <!-- Jalur Undangan -->
+                <div class="mechanism-card">
+                    <h3>Jalur Undangan & Prestasi</h3>
+                    <ul class="info-list">
+                        <li><strong>Syarat:</strong> Nilai rapor minimal 80 untuk 5 bidang studi (B.Indonesia,
+                            Matematika, IPA, IPS, PAI) semester 1,2 kelas 5 & semester 1 kelas 6.</li>
+                        <li>Juara lomba 1/2/3 tingkat provinsi/nasional atau hafidz minimal 3 juz.</li>
+                        <li><strong>Pendaftaran Online:</strong> 23 sd 27 Feb 2026</li>
+                        <li><strong>Ujian Praktek & Wawancara:</strong> 24 sd 28 Feb 2026</li>
+                        <li><strong>Pengumuman:</strong> 2 Maret 2026</li>
+                        <li><strong>Daftar Ulang:</strong> 3 sd 7 Maret 2026</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <h4><i class="fa-solid fa-exclamation-circle"></i> Catatan Penting</h4>
+                        <p>Bagi peserta yang diterima melalui jalur undangan dan prestasi, <strong>WAJIB</strong>
+                            tinggal di asrama kecuali daerah PABASKO.</p>
+                        <p style="margin-top:0.5rem">Bagi yang tidak lulus jalur prestasi, bisa mengikuti jalur
+                            asrama/non asrama dengan <strong>ikut tes tulis</strong> pada 28 Maret 2026.</p>
+                    </div>
+                </div>
+
+                <!-- Jalur Asrama/Non Asrama -->
+                <div class="mechanism-card">
+                    <h3>Jalur Asrama / Non Asrama</h3>
+                    <ul class="info-list">
+                        <li><strong>Syarat:</strong> Nilai rapor minimal 80 untuk 5 bidang studi utama.</li>
+                        <li><strong>Pendaftaran Online:</strong> 23 Februari sd 13 Maret 2026</li>
+                        <li><strong>Tes Praktek Ibadah:</strong> 24 Februari sd 14 Maret 2026 (kecuali hari libur)</li>
+                        <li><strong>Tes Tertulis:</strong> 28 Maret 2026 (Materi: Agama, B.Indo, MTK, IPA, IPS, PKN)
+                        </li>
+                        <li><strong>Pengumuman Hasil:</strong> 29 Maret 2026 jam 23.00 WIB</li>
+                        <li><strong>Daftar Ulang:</strong> 1 sd 10 April 2026</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <h4><i class="fa-solid fa-book-quran"></i> Materi Tes Praktek</h4>
+                        <p>Baca Al-Quran, Praktek Sholat, dan Tahfiz (kalau ada).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alur Online -->
+    <section class="section" style="background-color: var(--off-white);">
+        <div class="container">
+            <h2 class="section-title">Alur PPDB Online</h2>
+            <div class="timeline-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Buka Website</h3>
+                    <p>Kunjungi <a href="https://pmbm.mtsnpadangpanjang.sch.id"
+                            style="color:var(--dark-green); font-weight:bold;">pmbm.mtsnpadangpanjang.sch.id</a></p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Buat Akun & Isi Data</h3>
+                    <p>Buat akun (ingat user & pass), isi biodata, nilai, dan pilih waktu tes praktek. Lalu kirim
+                        pendaftaran.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Cek Status & Cetak</h3>
+                    <p>Tunggu verifikasi. Jika status "Terverifikasi", cetak bukti pendaftaran dan nomor ujian.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Tes Praktek</h3>
+                    <p>Datang ke MTSN sesuai jadwal dengan membawa print nomor pendaftaran.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Hasil</h3>
+                    <p>Lihat hasil tes atau penerimaan di website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section class="section" style="padding-bottom: 4rem;">
+        <div class="container">
+            <h2 class="section-title">Hubungi Panitia</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-name">Admin Aplikasi Ilham</span>
+                    <span class="contact-number">0823 2306 6956</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-name">Rinida</span>
+                    <span class="contact-number">0852 7292 9615</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-name">Walfurqan</span>
+                    <span class="contact-number">0852 6349 4509</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-name">Metra</span>
+                    <span class="contact-number">0813 7487 7230</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-name">Rani (Asrama)</span>
+                    <span class="contact-number">0812 6639 2660</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-name">WA MTsN</span>
+                    <span class="contact-number">0821 7374 1238</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-name">WA Asrama/Ummi Wulan</span>
+                    <span class="contact-number">0823 8699 7586</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--dark-green); color: white; padding: 2rem; text-align: center;">
+        <p>&copy; 2026 MTsN Kota Padang Panjang. All Rights Reserved.</p>
+        <p style="margin-top: 5px; font-size: 0.9rem; opacity: 0.8;">
+            Developed by : <a href="https://ilwa.my.id" target="_blank"
+                style="color: var(--gold); text-decoration: none; font-weight: bold; transition: 0.3s;">Ilwa</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
