@@ -130,6 +130,13 @@
             height: 40px;
         }
 
+        .nav__list {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
         .nav__link {
             text-decoration: none;
             color: var(--dark-green);
@@ -140,6 +147,21 @@
 
         .nav__link:hover {
             color: var(--gold);
+        }
+
+        .nav__link.highlight {
+            background-color: var(--gold);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            color: var(--dark-green) !important;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .nav__link.highlight:hover {
+            transform: translateY(-2px);
+            background-color: var(--gold-hover);
+            color: var(--dark-green) !important;
         }
 
         /* Toggle & Close Buttons (Hidden on Desktop) */
@@ -645,6 +667,8 @@
                     <ul class="nav__list">
                         <li class="nav__item"><a href="index.html" class="nav__link">Beranda</a></li>
                         <li class="nav__item"><a href="#detailed-flow" class="nav__link">Alur Pendaftaran</a></li>
+                        <li class="nav__item"><a href="https://pmbm.mtsnpadangpanjang.sch.id"
+                                class="nav__link highlight">Daftar Sekarang</a></li>
                     </ul>
                     <div class="nav__close" id="nav-close">
                         <i class="fa-solid fa-xmark"></i>
