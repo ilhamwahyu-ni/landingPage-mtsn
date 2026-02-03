@@ -142,6 +142,72 @@
             color: var(--gold);
         }
 
+        /* Toggle & Close Buttons (Hidden on Desktop) */
+        .nav__close,
+        .nav__toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Breakpoints */
+        @media screen and (max-width: 992px) {
+            .nav__menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--dark-green);
+                padding: 6rem 1.5rem 2rem 1.5rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+                transition: right 0.4s ease-in-out;
+                z-index: 1000;
+                display: block;
+                /* Ensure it's block so we can see it when toggled */
+            }
+
+            .show-menu {
+                right: 0;
+            }
+
+            .nav__list {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .nav__link {
+                color: var(--white);
+                font-size: 1.1rem;
+                width: 100%;
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+            .nav__link:hover {
+                color: var(--gold);
+            }
+
+            .nav__close {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 2rem;
+                color: var(--gold);
+                z-index: 1001;
+            }
+
+            .nav__toggle {
+                display: block;
+                font-size: 1.8rem;
+                color: var(--dark-green);
+                z-index: 999;
+            }
+        }
+
         /* ==================== PMBM HERO SECTION ==================== */
         .pmbm-hero {
             height: 60vh;
@@ -405,6 +471,162 @@
                 margin: 0 auto 1rem;
             }
         }
+
+        /* ==================== MERMAID & DETAILED FLOW ==================== */
+        .mermaid {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        #detailed-flow {
+            display: none;
+            /* Hidden by default */
+            margin-top: 3rem;
+            animation: fadeIn 0.5s;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toggle-flow-btn {
+            display: block;
+            margin: 2rem auto 0;
+            background: transparent;
+            border: 2px solid var(--dark-green);
+            color: var(--dark-green);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font-primary);
+        }
+
+        .toggle-flow-btn:hover {
+            background: var(--dark-green);
+            color: white;
+        }
+
+        /* Table Styles for Status Data */
+        .data-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: var(--dark-green);
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .data-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .detail-card {
+            background: #fcfcfc;
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5vh auto;
+            /* Add vertical margin */
+            padding: 20px;
+            width: 95%;
+            max-width: 1400px;
+            max-height: 90vh;
+            border-radius: 12px;
+            overflow: auto;
+            /* Enable scrolling */
+            display: block;
+            /* Use block to avoid flex centering clipping */
+            text-align: center;
+            /* Center content horizontally */
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-content svg {
+            max-width: 100% !important;
+            height: auto !important;
+            display: inline-block;
+            /* Ensure it respects text-align */
+        }
+
+        .close-modal {
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        #mermaid-diagram {
+            cursor: zoom-in;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #mermaid-diagram:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
@@ -418,10 +640,19 @@
                     <h2 style="color: var(--dark-green); font-family: var(--font-primary);">MTsN Kota Padang Panjang
                     </h2>
                 </a>
-                <div class="nav__menu">
+
+                <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="index.html" class="nav__link">Beranda</a></li>
+                        <li class="nav__item"><a href="#detailed-flow" class="nav__link">Alur Pendaftaran</a></li>
                     </ul>
+                    <div class="nav__close" id="nav-close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
             </nav>
         </div>
@@ -578,6 +809,8 @@
         </div>
     </section>
 
+    </section>
+
     <!-- Alur Online -->
     <section class="section" style="background-color: var(--off-white);">
         <div class="container">
@@ -611,8 +844,244 @@
                     <p>Lihat hasil tes atau penerimaan di website.</p>
                 </div>
             </div>
+
+            <!-- Button to Toggle Detailed Flow -->
+            <button id="toggleFlowBtn" class="toggle-flow-btn">
+                <i class="fa-solid fa-diagram-project"></i> Tampilkan Diagram Alur Lengkap
+            </button>
+
+            <!-- Detailed Flow Section (Hidden by Default) -->
+            <div id="detailed-flow">
+                <h3 style="text-align: center; color: var(--dark-green); margin-bottom: 2rem;">Diagram Alur Teknis</h3>
+
+                <div id="mermaid-diagram" style="background: #fff; padding: 20px; border-radius: 8px;"></div>
+
+                <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        mermaid.initialize({
+                            startOnLoad: false,
+                            theme: 'default',
+                            securityLevel: 'loose'
+                        });
+
+                        var graphDefinition = `flowchart TD
+A[Mulai] --> B[Registrasi Akun]
+B --> C[Login]
+C --> D[Dashboard Siswa]
+D --> E{Cek Status}
+E --> F[Isi Formulir]
+E --> G[Edit Formulir]
+E --> H[Menunggu Verifikasi]
+E --> I[Cetak Kartu Ujian]
+E --> J[Daftar Ulang]
+E --> K[Selesai]
+F --> L[Data Pribadi]
+L --> M[Data Sekolah]
+M --> N[Upload Dokumen]
+N --> O[Review Submit]
+O --> P[Kirim Pendaftaran]
+P --> Q[Verifikasi Admin]
+Q --> R[Status Revision]
+R --> G
+Q --> S[Status Verified]
+S --> T[Jadwal Ujian]
+T --> U[Pelaksanaan Ujian]
+U --> V[Penilaian]
+V --> W[Pengumuman]
+W --> X[Status Accepted]
+W --> Y[Status Rejected]
+Y --> K
+X --> Z[Proses Daftar Ulang]
+Z --> AA[Isi Form Ulang]
+AA --> AB[Upload Dokumen]
+AB --> AC[Simpan]
+AC --> AD[Cetak Bukti]
+AD --> AE[Selesai]`;
+
+                        var container = document.getElementById('mermaid-diagram');
+                        mermaid.render('mermaid-svg', graphDefinition).then(function (result) {
+                            container.innerHTML = result.svg;
+
+                            // Add Click Event for Modal
+                            container.addEventListener('click', function () {
+                                var modal = document.getElementById('mermaid-modal');
+                                var modalContent = document.getElementById('modal-diagram-container');
+                                modalContent.innerHTML = result.svg;
+                                modal.style.display = "flex";
+                                document.body.style.overflow = "hidden"; // Prevent scrolling
+                            });
+                        }).catch(function (error) {
+                            console.error('Mermaid error:', error);
+                            container.innerHTML = '<p style="color:red;">Error loading diagram: ' + error.message + '</p>';
+                        });
+
+                        // Modal Close Logic
+                        var modal = document.getElementById('mermaid-modal');
+                        var span = document.getElementsByClassName("close-modal")[0];
+
+                        if (span) {
+                            span.onclick = function () {
+                                modal.style.display = "none";
+                                document.body.style.overflow = "auto";
+                            }
+                        }
+
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                                document.body.style.overflow = "auto";
+                            }
+                        }
+                    });
+                </script>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: var(--dark-green); margin-bottom: 1.5rem;">Detail Tahapan Teknis</h3>
+
+                    <div class="detail-card">
+                        <h4>1. Registrasi Akun & Data Awal</h4>
+                        <p>Calon siswa memulai dengan membuat akun menggunakan Nama Lengkap, NIK (16 digit, unik),
+                            Email, dan Password. Sistem akan membuat user baru dan mengarahkan ke dashboard.</p>
+                    </div>
+
+                    <div class="detail-card">
+                        <h4>2. Pengisian Formulir Pendaftaran (Tahap 1)</h4>
+                        <p>Siswa mengisi formulir pendaftaran melalui wizard 4 langkah:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Langkah 1:</strong> Data Pribadi (Biodata, Alamat), dan Data Orang Tua.</li>
+                            <li><strong>Langkah 2:</strong> Data Sekolah Asal, Jalur Pendaftaran, Penjadwalan Tes (jika
+                                berlaku), dan Input Nilai Rapor (Kelas 4-6).</li>
+                            <li><strong>Langkah 3:</strong> Upload Dokumen Wajib (Surat Keterangan Nilai, Pas Foto) &
+                                Dokumen Khusus (Sertifikat).</li>
+                            <li><strong>Langkah 4:</strong> Review ringkasan data dan submit.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-card">
+                        <h4>3. Verifikasi & Seleksi</h4>
+                        <p>Admin memverifikasi data. Status flow:</p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><code>Submitted</code> -> <code>Verified</code> (Data valid).</li>
+                            <li><code>Submitted</code> -> <code>Revision</code> (Ada data kurang, siswa harus edit
+                                ulang).</li>
+                            <li><code>Submitted</code> -> <code>Rejected</code> (Tidak memenuhi syarat).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: var(--dark-green); margin-bottom: 1.5rem;">Status Data Siswa</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Deskripsi</th>
+                                <th>Aksi Siswa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Draft</strong></td>
+                                <td>Formulir belum dikirim.</td>
+                                <td>Bisa edit dan submit.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Submitted</strong></td>
+                                <td>Formulir dikirim, menunggu verifikasi.</td>
+                                <td>Tidak bisa edit (Read-only). Bisa ajukan revisi.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Revision</strong></td>
+                                <td>Admin meminta perbaikan data.</td>
+                                <td>Bisa edit dan submit ulang.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Verified</strong></td>
+                                <td>Data administrasi valid.</td>
+                                <td>Cetak Kartu Ujian. Menunggu pengumuman.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Accepted</strong></td>
+                                <td>Lulus seleksi.</td>
+                                <td>Akses menu Daftar Ulang.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rejected</strong></td>
+                                <td>Tidak lulus seleksi.</td>
+                                <td>Selesai.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
+
+    <script>
+        // Simple Toggle Script for Flow Diagram
+        document.getElementById('toggleFlowBtn').addEventListener('click', function () {
+            var content = document.getElementById('detailed-flow');
+            var btn = this;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerHTML = '<i class="fa-solid fa-diagram-project"></i> Tampilkan Diagram Alur Lengkap';
+            } else {
+                content.style.display = "block";
+                btn.innerHTML = '<i class="fa-solid fa-minus"></i> Sembunyikan Diagram';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const navMenu = document.getElementById('nav-menu'),
+            navToggle = document.getElementById('nav-toggle'),
+            navClose = document.getElementById('nav-close');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu')
+            })
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu')
+            })
+        }
+
+        const navLinks = document.querySelectorAll('.nav__link');
+        function linkAction() {
+            const navMenu = document.getElementById('nav-menu')
+            // When we click on each nav__link, we remove the show-menu class
+            navMenu.classList.remove('show-menu')
+        }
+        navLinks.forEach(n => n.addEventListener('click', linkAction))
+
+        // Auto scroll and show diagram when clicking nav link
+        document.querySelectorAll('a[href="#detailed-flow"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var content = document.getElementById('detailed-flow');
+                var btn = document.getElementById('toggleFlowBtn');
+
+                // Show the diagram if hidden
+                if (content.style.display !== "block") {
+                    content.style.display = "block";
+                    btn.innerHTML = '<i class="fa-solid fa-minus"></i> Sembunyikan Diagram';
+                }
+
+                // Scroll to the section with offset for fixed header
+                setTimeout(function () {
+                    var headerHeight = document.querySelector('header').offsetHeight || 80;
+                    var elementPosition = content.getBoundingClientRect().top + window.pageYOffset;
+                    window.scrollTo({
+                        top: elementPosition - headerHeight - 20,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            });
+        });
+    </script>
 
     <!-- Kontak -->
     <section class="section" style="padding-bottom: 4rem;">
@@ -660,6 +1129,11 @@
         </p>
     </footer>
 
+    <!-- Mermaid Modal -->
+    <div id="mermaid-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content" id="modal-diagram-container"></div>
+    </div>
 </body>
 
 </html>
