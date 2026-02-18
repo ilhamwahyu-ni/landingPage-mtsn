@@ -226,7 +226,13 @@
                 /* Keep hidden until hover/focus */
             }
 
+            /* Disable hover on mobile */
             .dropdown:hover .dropdown-content {
+                display: none;
+            }
+
+            /* Enable via class */
+            .dropdown.active .dropdown-content {
                 display: block;
             }
 
@@ -1172,7 +1178,19 @@ AD --> AE[Selesai]`;
         }
 
         const navLinks = document.querySelectorAll('.nav__link');
-        function linkAction() {
+
+        function linkAction(e) {
+            // Check if this is a dropdown toggle (Download link)
+            const dropdownParent = this.closest('.dropdown');
+
+            // Only handle dropdown toggle logic on mobile
+            // If the element is a dropdown toggle (href="#"), toggle the menu and return
+            if (dropdownParent && window.innerWidth <= 992 && this.getAttribute('href') === '#') {
+                e.preventDefault();
+                dropdownParent.classList.toggle('active');
+                return; // Do NOT close the main menu
+            }
+
             const navMenu = document.getElementById('nav-menu')
             // When we click on each nav__link, we remove the show-menu class
             navMenu.classList.remove('show-menu')
